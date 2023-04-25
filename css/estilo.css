@@ -1,42 +1,48 @@
 body {
-    background-color: #FF8000;
-  }
-  
-  .contenedor {
-    width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #FFFFFF;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-  }
-  
-  .logo {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .logo img {
-    max-width: 100%;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  input[type="text"], input[type="password"], input[type="button"], input[type="email"] {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: none;
-  }
-  
-  input[type="button"] {
-    background-color: #FF8000;
-    color: #FFFFFF;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgb(255, 172, 89) 0%,
+    rgba(255, 223, 191, 1) 25%,
+    rgba(255, 227, 199, 1) 50%,
+    rgba(255, 223, 191, 1) 75%,
+    rgb(255, 172, 89) 100%
+  );
+}
+
+.myForms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.btn-orange {
+  background-color: rgb(255, 128, 0);
+  color: white;
+}
+
+.rounded-t-5 {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+@media (min-width: 992px) {
+  .rounded-tr-lg-0 {
+    border-top-right-radius: 0;
   }
 
-  
+  .rounded-bl-lg-5 {
+    border-bottom-left-radius: 0.5rem;
+  }
+}
+.cascading-right {
+  margin-right: -50px;
+}
+
+@media (max-width: 991.98px) {
+  .cascading-right {
+    margin-right: 0;
+  }
+}

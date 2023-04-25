@@ -1,22 +1,142 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Iniciar Sesión</title>
+  <title>UR | Inicio</title>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/estilo.css">
   <link rel="icon" href="./imagenes/icono.icon">
+
+  <script src="js/jquery-3.6.0.js"></script>
+  <script src="js/index.js"></script>
 </head>
+
 <body>
-  <div class="contenedor">
-    <div class="logo">
-      <img src="./imagenes/logo naranja.jpeg" alt="Logo de la empresa">
+
+  <div class="myForms">
+
+    <div id="login" class="w-75 h-75">
+      <section class=" text-center text-lg-start">
+        <div class="card mb-3">
+          <div class="row g-0 d-flex align-items-center">
+            <div class="col-lg-4 d-none d-lg-flex">
+              <img src="imagenes/house.jpg" alt="Trendy Pants and Shoes"
+                class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+            </div>
+            <div class="col-lg-8">
+              <div class="fs-2 fw-bold text-center"> Inicio de Sesión</div>
+              <div class="card-body py-5 px-md-5">
+
+                <form>
+                  <!-- User input -->
+                  <div class="container">
+                    <div class="mx-auto form-outline mb-4 w-75">
+                      <input type="text" id="usuario" class="form-control" />
+                      <label class="form-label" for="form2Example1">Nombre de usuario</label>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="mx-auto form-outline mb-4 w-75">
+                      <input type="password" id="form2Example2" class="form-control" />
+                      <label class="form-label" for="form2Example2">Contraseña</label>
+                    </div>
+
+                  </div>
+
+                  <!-- Submit button -->
+                  <div class="d-flex justify-content-center">
+                    <button type="button" id="BtnLogin" class="btn btn-orange btn-block mb-4">Ingresar</button>
+
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <div class="d-flex flex-column">
+                      <span>¿Aún no tienes cuenta?</span>
+                      <button type="button" id="irRegistro" class="btn btn-block mb-4 text-primary">Registrate</button>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-    <form>
-      <input type="text" placeholder="Usuario">
-      <input type="password" placeholder="Contraseña">
-      <input onclick=ir() type="button" value="Ingresar">
-    </form>
-    <p>¿No tienes una cuenta? <a href="./registro.html">Regístrate aquí</a>.</p>
+
+
+
+    <div id="register" class="w-75 h-75">
+      <section class="text-center text-lg-start">
+        <!-- Jumbotron -->
+        <div class="container py-4">
+          <div class="row g-0 align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <div class="card cascading-right" style="
+              background: hsla(0, 0%, 100%, 0.55);
+              backdrop-filter: blur(30px);
+              ">
+                <div class="card-body p-5 shadow-5 text-center">
+                  <h2 class="fw-bold mb-5">Registro</h2>
+                  <form>
+                    <!-- 2 column grid layout with text inputs for the first and last names -->
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <input type="text" id="form3Example1" class="form-control" />
+                          <label class="form-label" for="form3Example1">Nombre(s)</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <input type="text" id="form3Example2" class="form-control" />
+                          <label class="form-label" for="form3Example2">Apellido(s)</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                      <input type="email" id="form3Example3" class="form-control" />
+                      <label class="form-label" for="form3Example3">Nombre de usuario</label>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                      <input type="password" id="form3Example4" class="form-control" />
+                      <label class="form-label" for="form3Example4">Contraseña</label>
+                    </div>
+
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-success btn-block mb-4">
+                      Registrar
+                    </button>
+                    <button type="button" id="irLogin" class="btn btn-secondary btn-block mb-4">
+                      Cancelar
+                    </button>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <img src="imagenes/couple.jpg" class="w-75 rounded-4 shadow-4" alt="" />
+            </div>
+          </div>
+        </div>
+        <!-- Jumbotron -->
+      </section>
+    </div>
+
   </div>
-  <script src="./js/codigo.js"></script>
+
+
+  <footer class="d-flex justify-content-center">
+    <a href="http://www.freepik.com">Images: Designed by Freepik</a>
+  </footer>
+
 </body>
+
 </html>
