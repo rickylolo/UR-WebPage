@@ -8,6 +8,13 @@ body {
     rgba(255, 223, 191, 1) 75%,
     rgb(243, 119, 57) 100%
   );
+
+  font-family: Arial, sans-serif;
+}
+
+#logo img {
+  width: 7.5rem;
+  max-height: 7.5rem;
 }
 
 .myForms {
