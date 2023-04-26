@@ -1,161 +1,267 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<title>UR | Inicio</title>
 
-<head>
-  <title>UR | Inicio</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="./css/estilo.css" />
+		<link rel="icon" href="./imagenes/logo.png" />
+		<script src="js/jquery-3.6.0.js"></script>
+		<script src="js/index.js"></script>
+	</head>
 
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./css/estilo.css">
-  <link rel="icon" href="./imagenes/logo.png">
-  <script src="js/jquery-3.6.0.js"></script>
-  <script src="js/index.js"></script>
+	<body>
+		<div class="myForms">
+			<div id="login" class="w-75 h-75">
+				<section class="text-center text-lg-start">
+					<div class="card mb-4">
+						<div class="row g-0 d-flex align-items-center">
+							<div class="col-lg-4 d-none d-lg-flex">
+								<img
+									src="imagenes/house.jpg"
+									alt="House"
+									class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5"
+								/>
+							</div>
+							<div class="col-lg-6">
+								<div class="d-flex flex-column">
+									<div id="logo" class="d-flex justify-content-center">
+										<img src="imagenes/icono.jpg" />
+									</div>
+									<div class="fs-4 p-1 fw-bold text-center">
+										Inicio de Sesión
+									</div>
+								</div>
+								<div class="card-body px-md-5">
+									<form>
+										<!-- User input -->
+										<div class="container">
+											<div class="mx-auto form-outline mb-4 w-75">
+												<input type="text" id="usuario" class="form-control" />
+												<label class="form-label" for="form2Example1"
+													>Nombre de usuario</label
+												>
+											</div>
 
-</head>
+											<!-- Password input -->
+											<div class="mx-auto form-outline mb-4 w-75">
+												<input
+													type="password"
+													id="form2Example2"
+													class="form-control"
+												/>
+												<label class="form-label" for="form2Example2"
+													>Contraseña</label
+												>
+											</div>
+										</div>
 
-<body>
+										<!-- Submit button -->
+										<div class="d-flex justify-content-center">
+											<button
+												type="button"
+												id="BtnLogin"
+												class="btn btn-orange btn-block mb-4"
+											>
+												Ingresar
+											</button>
+										</div>
+										<div class="d-flex justify-content-center">
+											<div class="d-flex flex-column">
+												<span>¿Aún no tienes cuenta?</span>
+												<button
+													type="button"
+													id="irRegistro"
+													class="btn btn-block mb-4 text-primary"
+												>
+													Registrate
+												</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
 
-  <div class="myForms">
+			<div id="register" class="w-100 h-100">
+				<section class="text-center text-lg-start">
+					<div class="container py-1">
+						<div class="row g-0 align-items-center">
+							<div class="col-lg-6 mb-5 mb-lg-0">
+								<div
+									class="card cascading-right"
+									style="
+										background: hsla(0, 0%, 100%, 0.55);
+										backdrop-filter: blur(30px);
+									"
+								>
+									<div class="card-body p-5 shadow-5 text-center">
+										<h2 class="fw-bold mb-5">Registro</h2>
+										<form>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-outline">
+														<input
+															type="text"
+															id="form3Example1"
+															class="form-control"
+														/>
+														<label class="form-label" for="form3Example1"
+															>Nombre(s)</label
+														>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-outline">
+														<input
+															type="text"
+															id="form3Example2"
+															class="form-control"
+														/>
+														<label class="form-label" for="form3Example2"
+															>Apellido(s)</label
+														>
+													</div>
+												</div>
+											</div>
 
-    <div id="login" class="w-75 h-75">
-      <section class=" text-center text-lg-start">
-        <div class="card mb-4">
-          <div class="row g-0 d-flex align-items-center">
-            <div class="col-lg-4 d-none d-lg-flex">
-              <img src="imagenes/house.jpg" alt="House" class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
-            </div>
-            <div class="col-lg-6">
-              <div class="d-flex flex-column">
-                <div id="logo" class="d-flex justify-content-center"><img src="imagenes/icono.jpg"></div>
-                <div class="fs-4 p-1 fw-bold text-center"> Inicio de Sesión</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-outline">
+														<input
+															type="text"
+															id="form3Example1"
+															class="form-control"
+														/>
+														<label class="form-label" for="form3Example1"
+															>Ocupación</label
+														>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-outline">
+														<input
+															type="number"
+															id="form3Example2"
+															class="form-control"
+														/>
+														<label class="form-label" for="form3Example2"
+															>Edad</label
+														>
+													</div>
+												</div>
+											</div>
 
-              </div>
-              <div class="card-body  px-md-5">
+											<div class="form-outline">
+												<input
+													type="file"
+													id="form3Example3"
+													class="form-control"
+												/>
+												<label class="form-label" for="form3Example3"
+													>Avatar</label
+												>
+											</div>
 
-                <form>
-                  <!-- User input -->
-                  <div class="container">
-                    <div class="mx-auto form-outline mb-4 w-75">
-                      <input type="text" id="usuario" class="form-control" />
-                      <label class="form-label" for="form2Example1">Nombre de usuario</label>
-                    </div>
+											<div class="form-outline">
+												<input
+													type="email"
+													id="form3Example3"
+													class="form-control"
+												/>
+												<label class="form-label" for="form3Example3"
+													>Correo</label
+												>
+											</div>
 
-                    <!-- Password input -->
-                    <div class="mx-auto form-outline mb-4 w-75">
-                      <input type="password" id="form2Example2" class="form-control" />
-                      <label class="form-label" for="form2Example2">Contraseña</label>
-                    </div>
+											<div class="form-outline">
+												<input
+													type="text"
+													id="form3Example3"
+													class="form-control"
+												/>
+												<label class="form-label" for="form3Example3"
+													>Nombre de usuario</label
+												>
+											</div>
 
-                  </div>
+											<div class="form-outline">
+												<input
+													type="password"
+													id="form3Example4"
+													class="form-control"
+												/>
+												<label class="form-label" for="form3Example4"
+													>Contraseña</label
+												>
+											</div>
 
-                  <!-- Submit button -->
-                  <div class="d-flex justify-content-center">
-                    <button type="button" id="BtnLogin" class="btn btn-orange btn-block mb-4">Ingresar</button>
+											<div class="form-outline">
+												<input
+													type="password"
+													id="form3Example6"
+													class="form-control"
+												/>
+												<label class="form-label" for="form3Example6"
+													>Confirmar contraseña</label
+												>
+											</div>
 
-                  </div>
-                  <div class="d-flex justify-content-center">
-                    <div class="d-flex flex-column">
-                      <span>¿Aún no tienes cuenta?</span>
-                      <button type="button" id="irRegistro" class="btn btn-block mb-4 text-primary">Registrate</button>
-                    </div>
-                  </div>
-                </form>
+											<div class="form-outline">
+												<textarea
+													class="form-control"
+													aria-label="descripcion"
+												></textarea>
+												<label class="form-label" for="form3Example4"
+													>Descripción</label
+												>
+											</div>
 
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+											<div class="form-outline">
+												<input
+													type="text"
+													id="form3Example5"
+													class="form-control"
+												/>
+												<label class="form-label" for="form3Example5"
+													>Dirección</label
+												>
+											</div>
 
+											<button
+												type="submit"
+												class="btn btn-success btn-block mb-4"
+											>
+												Registrar
+											</button>
+											<button
+												type="button"
+												id="irLogin"
+												class="btn btn-secondary btn-block mb-4"
+											>
+												Cancelar
+											</button>
+										</form>
+									</div>
+								</div>
+							</div>
 
-
-    <div id="register" class="w-100 h-100">
-      <section class="text-center text-lg-start">
-        <!-- Jumbotron -->
-        <div class="container py-1">
-          <div class="row g-0 align-items-center">
-            <div class="col-lg-6 mb-5 mb-lg-0">
-              <div class="card cascading-right" style="
-              background: hsla(0, 0%, 100%, 0.55);
-              backdrop-filter: blur(30px);
-              ">
-                <div class="card-body p-5 shadow-5 text-center">
-                  <h2 class="fw-bold mb-5">Registro</h2>
-                  <form>
-
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-outline">
-                          <input type="text" id="form3Example1" class="form-control" />
-                          <label class="form-label" for="form3Example1">Nombre(s)</label>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-outline">
-                          <input type="text" id="form3Example2" class="form-control" />
-                          <label class="form-label" for="form3Example2">Apellido(s)</label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="form-outline">
-                      <input type="file" id="form3Example3" class="form-control" />
-                      <label class="form-label" for="form3Example3">Avatar</label>
-                    </div>
-
-                    <div class="form-outline">
-                      <input type="email" id="form3Example3" class="form-control" />
-                      <label class="form-label" for="form3Example3">Correo</label>
-                    </div>
-
-                    <div class="form-outline">
-                      <input type="text" id="form3Example3" class="form-control" />
-                      <label class="form-label" for="form3Example3">Nombre de usuario</label>
-                    </div>
-
-
-                    <div class="form-outline">
-                      <input type="password" id="form3Example4" class="form-control" />
-                      <label class="form-label" for="form3Example4">Contraseña</label>
-                    </div>
-
-
-                    <div class="form-outline">
-                      <textarea class="form-control" aria-label="descripcion"></textarea>
-                      <label class="form-label" for="form3Example4">Descripción</label>
-                    </div>
-
-                      <div class="form-outline">
-                      <input type="text" id="form3Example5" class="form-control" />
-                      <label class="form-label" for="form3Example5">Dirección</label>
-                    </div>
-
-
-
-
-                    <button type="submit" class="btn btn-success btn-block mb-4">
-                      Registrar
-                    </button>
-                    <button type="button" id="irLogin" class="btn btn-secondary btn-block mb-4">
-                      Cancelar
-                    </button>
-
-                  </form>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6 mb-5 mb-lg-0">
-              <img src="imagenes/couple.jpg" class="w-75 rounded-4 shadow-4" alt="" />
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/popper.min.js"></script>
-</body>
-
+							<div class="col-lg-6 mb-5 mb-lg-0">
+								<img
+									src="imagenes/couple.jpg"
+									class="w-75 rounded-4 shadow-4"
+									alt=""
+								/>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+		<script src="js/bootstrap.bundle.min.js"></script>
+		<script src="js/popper.min.js"></script>
+	</body>
 </html>

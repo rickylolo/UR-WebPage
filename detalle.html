@@ -1,480 +1,484 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UNI-Rest | Detalle</title>
-    <link rel="icon" href="./imagenes/logo.png" />
-    <script src="js/jquery-3.6.0.js"></script>
-    <script src="js/detalle.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/detalle.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
-    />
-  </head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>UNI-Rest | Detalle</title>
+		<link rel="icon" href="./imagenes/logo.png" />
+		<script src="js/jquery-3.6.0.js"></script>
+		<script src="js/detalle.js"></script>
+		<script src="js/bootstrap.bundle.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/detalle.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+		/>
+	</head>
 
-  <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light">
-      <div class="container">
-        <img src="imagenes/logo.png " width="100px" />
-        <a class="navbar-brand fs-4 fw-bold p-4" href="fyp.html">UNI-Rest</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-          <div id="perfil">
-            <div class="d-flex flex-column dropstart misDatosUsuario">
-              <div
-                class="dropdown p-2 mx-auto"
-                id="NavPerfil"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img src="imagenes/imagen-dario.png" class="rounded-circle" />
-              </div>
-              <ul class="dropdown-menu" aria-labelledby="DatosUser">
-                <li class="misDatosUser">
-                  <div class="d-flex flex-row miImagen">
-                    <div class="p-2">
-                      <img
-                        src="imagenes/imagen-dario.png"
-                        class="rounded-circle"
-                      />
-                    </div>
-                    <div class="p-2">
-                      <div class="d-flex flex-column">
-                        <p class="fs-5 p-1 fw-bold">Dario</p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
+	<body>
+		<nav class="navbar sticky-top navbar-expand-lg navbar-light">
+			<div class="container">
+				<img src="imagenes/logo.png " width="100px" />
+				<a class="navbar-brand fs-4 fw-bold p-4" href="fyp.html">UNI-Rest</a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+					<div id="perfil">
+						<div class="d-flex flex-column dropstart misDatosUsuario">
+							<div
+								class="dropdown p-2 mx-auto"
+								id="NavPerfil"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+							>
+								<img src="imagenes/imagen-dario.png" class="rounded-circle" />
+							</div>
+							<ul class="dropdown-menu" aria-labelledby="DatosUser">
+								<li class="misDatosUser">
+									<div class="d-flex flex-row miImagen">
+										<div class="p-2">
+											<img
+												src="imagenes/imagen-dario.png"
+												class="rounded-circle"
+											/>
+										</div>
+										<div class="p-2">
+											<div class="d-flex flex-column">
+												<p class="fs-5 p-1 fw-bold">Dario</p>
+											</div>
+										</div>
+									</div>
+								</li>
 
-                <div class="dropdown-divider"></div>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    data-bs-toggle="modal"
-                    data-bs-target="#miModalPerfil"
-                  >
-                    Perfil</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    data-bs-toggle="modal"
-                    data-bs-target="#miModalMensaje"
-                  >
-                    Mensajes</a
-                  >
-                </li>
+								<div class="dropdown-divider"></div>
+								<li>
+									<a
+										class="dropdown-item"
+										data-bs-toggle="modal"
+										data-bs-target="#miModalPerfil"
+									>
+										Perfil</a
+									>
+								</li>
+								<li>
+									<a
+										class="dropdown-item"
+										data-bs-toggle="modal"
+										data-bs-target="#miModalMensaje"
+									>
+										Mensajes</a
+									>
+								</li>
 
-                <li>
-                  <a class="dropdown-item" href="alojamiento.html">
-                    Alojamiento</a
-                  >
-                </li>
-                <div class="dropdown-divider"></div>
-                <li>
-                  <a class="dropdown-item" href="index.html">Cerrar Sesión</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+								<li>
+									<a class="dropdown-item" href="alojamiento.html">
+										Alojamiento</a
+									>
+								</li>
+								<div class="dropdown-divider"></div>
+								<li>
+									<a class="dropdown-item" href="index.html">Cerrar Sesión</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
 
-    <div class="container">
-      <hr class="solid" />
-      <div class="d-flex flex-row">
-        <div class="p-2">
-          <div class="card" style="width: 28rem">
-            <div class="deslizador">
-              <div class="deslizador-interno">
-                <img src="imagenes/img1.jpg" alt="Imagen 1" />
-                <img src="imagenes/img2.jpg" alt="Imagen 2" />
-                <img src="imagenes/img3.jpg" alt="Imagen 3" />
-                <img src="imagenes/img4.jpg" alt="Imagen 4" />
-                <img src="imagenes/img5.jpg" alt="Imagen 5" />
-                <img src="imagenes/img6.jpg" alt="Imagen 6" />
-              </div>
-            </div>
-            <div class="card-body">
-              <h5 class="fw-bold card-title">Alojamiento San Nicolás</h5>
-              <p class="card-text text-end text-primary">
-                $15,000.00 MXN Mensuales
-              </p>
-              <a
-                href=""
-                data-bs-toggle="modal"
-                data-bs-target="#miModalMetodoPago"
-                class="btn btn-primary d-flex justify-content-center"
-                >Rentar</a
-              >
-            </div>
-          </div>
-        </div>
-        <div class="p-2 flex-fill shadow-sm">
-          <div class="d-flex flex-column">
-            <div class="d-flex flex-column">
-              <div class="d-flex justify-content-between">
-                <p class="fs-3 p-1 fw-bolder">Alojamiento San Nicolás</p>
-                <div>
-                  <div class="d-flex flex-row justify-content-end">
-                    <span class="badge fs-6 rounded-pill bg-success"
-                      >Disponible</span
-                    >
-                  </div>
-                </div>
-              </div>
-              <p class="text-end fs-6 fw-light text-secondary">
-                En renta por: Brandon Dylan Regil Llovera
-              </p>
-            </div>
-            <div></div>
-            <hr class="solid" />
-            <div class="p-2 fs-5 text-center text-muted">
-              Características de la vivienda
-            </div>
-            <ul class="fs-6">
-              <li>Casa de 2 pisos, color blanco</li>
-              <li>Amplio patio y bonita zona verde en la parte de atrás</li>
-              <li>2 cuartos, 1 con baño propio</li>
-            </ul>
-            <hr class="solid" />
+		<div class="container">
+			<hr class="solid" />
+			<div class="d-flex flex-row">
+				<div class="p-2">
+					<div class="card" style="width: 28rem">
+						<div class="deslizador">
+							<div class="deslizador-interno">
+								<img src="imagenes/img1.jpg" alt="Imagen 1" />
+								<img src="imagenes/img2.jpg" alt="Imagen 2" />
+								<img src="imagenes/img3.jpg" alt="Imagen 3" />
+								<img src="imagenes/img4.jpg" alt="Imagen 4" />
+								<img src="imagenes/img5.jpg" alt="Imagen 5" />
+								<img src="imagenes/img6.jpg" alt="Imagen 6" />
+							</div>
+						</div>
+						<div class="card-body">
+							<h5 class="fw-bold card-title">Alojamiento San Nicolás</h5>
+							<p class="card-text text-end text-primary">
+								$15,000.00 MXN Mensuales
+							</p>
+							<a
+								href=""
+								id="rentarAlojamiento"
+								class="btn btn-primary d-flex justify-content-center"
+								>Rentar</a
+							>
+						</div>
+					</div>
+				</div>
+				<div class="p-2 flex-fill shadow-sm">
+					<div class="d-flex flex-column">
+						<div class="d-flex flex-column">
+							<div class="d-flex justify-content-between">
+								<p class="fs-3 p-1 fw-bolder">Alojamiento San Nicolás</p>
+								<div>
+									<div class="d-flex flex-row justify-content-end">
+										<span class="badge fs-6 rounded-pill bg-success"
+											>Disponible</span
+										>
+									</div>
+								</div>
+							</div>
+							<p class="text-end fs-6 fw-light text-secondary">
+								En renta por: Brandon Dylan Regil Llovera
+							</p>
+						</div>
+						<div></div>
+						<hr class="solid" />
+						<div class="p-2 fs-5 text-center text-muted">
+							Características de la vivienda
+						</div>
+						<ul class="fs-6">
+							<li>Casa de 2 pisos, color blanco</li>
+							<li>Amplio patio y bonita zona verde en la parte de atrás</li>
+							<li>2 cuartos, 1 con baño propio</li>
+						</ul>
+						<hr class="solid" />
 
-            <div class="p-2 fs-5 text-center text-muted">Dirección</div>
-            <div class="text-start ms-4">
-              Calle Bugambilia 1899, San Nicolás de los Garza, Nuevo León,
-              México.
-            </div>
-            <hr class="solid" />
+						<div class="p-2 fs-5 text-center text-muted">Dirección</div>
+						<div class="text-start ms-4">
+							Calle Bugambilia 1899, San Nicolás de los Garza, Nuevo León,
+							México.
+						</div>
+						<hr class="solid" />
 
-            <div class="p-2 fs-5 text-center text-muted">Vendedor</div>
-            <div class="d-flex flex-row pfpPerfil">
-              <div class="p-1">
-                <img src="imagenes/avatar.jpg" class="rounded-circle" />
-              </div>
-              <div class="p-3">
-                <div class="d-flex flex-column">
-                  <div class="d-flex justify-content-between">
-                    <p class="fs-4 p-1 fw-bold">WailyngDylan</p>
-                    <div>
-                      <button type="button" class="btn btn-primary">
-                        Enviar Mensaje
-                      </button>
-                    </div>
-                  </div>
-                  <p class="text-muted fw-bold fs-6 p-1">
-                    Brandon Dylan Regil Llovera
-                  </p>
-                  <p class="text-muted fs-6 p-1"><b>Edad:</b> 22</p>
-                  <p class="text-muted fs-6 p-1">
-                    <b>Ocupación:</b> Estudiante
-                  </p>
-                  <p class="text-muted fs-6 p-1">
-                    <b>Correo:</b> wailiyng@gmail.com
-                  </p>
+						<div class="p-2 fs-5 text-center text-muted">Vendedor</div>
+						<div class="d-flex flex-row pfpPerfil">
+							<div class="p-1">
+								<img src="imagenes/avatar.jpg" class="rounded-circle" />
+							</div>
+							<div class="p-3">
+								<div class="d-flex flex-column">
+									<div class="d-flex justify-content-between">
+										<p class="fs-4 p-1 fw-bold">WailyngDylan</p>
+										<div>
+											<button
+												type="button"
+												data-bs-toggle="modal"
+												data-bs-target="#miModalMensaje"
+												class="btn btn-primary"
+											>
+												Enviar Mensaje
+											</button>
+										</div>
+									</div>
+									<p class="text-muted fw-bold fs-6 p-1">
+										Brandon Dylan Regil Llovera
+									</p>
+									<p class="text-muted fs-6 p-1"><b>Edad:</b> 22</p>
+									<p class="text-muted fs-6 p-1">
+										<b>Ocupación:</b> Estudiante
+									</p>
+									<p class="text-muted fs-6 p-1">
+										<b>Correo:</b> wailiyng@gmail.com
+									</p>
 
-                  <hr class="solid" />
-                  <p class="fs-6 p-2" id="descripcion">
-                    Como rentador de inmuebles, me enorgullece ofrecer
-                    propiedades de alta calidad y servicios excepcionales a mis
-                    clientes. Me enfoco en brindar a los inquilinos una
-                    experiencia cómoda y satisfactoria en cada propiedad que
-                    administro. Mi objetivo es ayudar a los inquilinos a
-                    encontrar la casa perfecta para sus necesidades y
-                    presupuesto. Ofrezco una variedad de opciones de casas en
-                    renta en ubicaciones seguras y convenientes, con todas las
-                    comodidades necesarias para vivir cómodamente. También me
-                    aseguro de mantener una comunicación fluida con los
-                    inquilinos, responder a cualquier pregunta o preocupación en
-                    un plazo razonable y proporcionar un servicio de
-                    mantenimiento eficiente para mantener las propiedades en
-                    excelentes condiciones. En general, mi compromiso es brindar
-                    un servicio de renta de inmuebles profesional y de alta
-                    calidad, y asegurarme de que los inquilinos tengan una
-                    experiencia cómoda y satisfactoria durante su estancia en
-                    nuestras propiedades.
-                  </p>
-                </div>
-                <hr class="solid" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+									<hr class="solid" />
+									<p class="fs-6 p-2" id="descripcion">
+										Como rentador de inmuebles, me enorgullece ofrecer
+										propiedades de alta calidad y servicios excepcionales a mis
+										clientes. Me enfoco en brindar a los inquilinos una
+										experiencia cómoda y satisfactoria en cada propiedad que
+										administro. Mi objetivo es ayudar a los inquilinos a
+										encontrar la casa perfecta para sus necesidades y
+										presupuesto. Ofrezco una variedad de opciones de casas en
+										renta en ubicaciones seguras y convenientes, con todas las
+										comodidades necesarias para vivir cómodamente. También me
+										aseguro de mantener una comunicación fluida con los
+										inquilinos, responder a cualquier pregunta o preocupación en
+										un plazo razonable y proporcionar un servicio de
+										mantenimiento eficiente para mantener las propiedades en
+										excelentes condiciones. En general, mi compromiso es brindar
+										un servicio de renta de inmuebles profesional y de alta
+										calidad, y asegurarme de que los inquilinos tengan una
+										experiencia cómoda y satisfactoria durante su estancia en
+										nuestras propiedades.
+									</p>
+								</div>
+								<hr class="solid" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <!--  >MODAL WINDOW MENSAJES<-->
-    <div
-      class="modal fade"
-      id="miModalMensaje"
-      tabindex="-1"
-      aria-hidden="true"
-      aria-labelledby="modalTitle"
-      data-bs-backdrop="static"
-    >
-      <div
-        class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"
-      >
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="modalTitle">Chat</h4>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="d-flex flex-row justify-content-between">
-              <div id="misChats">
-                <div class="list-group">
-                  <a
-                    href=""
-                    class="list-group-item list-group-item-action"
-                    aria-current="true"
-                  >
-                    <div class="d-flex flex-row miImagen chat">
-                      <div class="p-2"><img src="imagenes/img1.jpg" /></div>
-                      <div class="p-2">
-                        <div class="d-flex flex-column">
-                          <p class="fs-5 p-1 fw-bold">Alojamiento Encinos</p>
-                          <p class="text-muted fs-6 fw-light" id="vendedor">
-                            En renta por: Brandon Dylan Regil Llovera
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                  <a
-                    href=""
-                    class="list-group-item list-group-item-action"
-                    aria-current="true"
-                  >
-                    <div class="d-flex flex-row miImagen chat">
-                      <div class="p-2"><img src="imagenes/img2.jpg" /></div>
-                      <div class="p-2">
-                        <div class="d-flex flex-column">
-                          <p class="fs-5 p-1 fw-bold">Alojamiento Anahuac</p>
-                          <p class="text-muted fs-6 fw-light" id="vendedor">
-                            En renta por: Brandon Dylan Regil Llovera
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                  <a
-                    href="#"
-                    class="list-group-item list-group-item-action"
-                    aria-current="true"
-                  >
-                    <div class="d-flex flex-row miImagen chat">
-                      <div class="p-2">
-                        <img src="imagenes/img3.jpg" class="pfp" />
-                      </div>
-                      <div class="p-2">
-                        <div class="d-flex flex-column">
-                          <p class="fs-5 p-1 fw-bold">Alojamiento Apodaca</p>
-                          <p class="text-muted fs-6 fw-light" id="vendedor">
-                            En renta por: Brandon Dylan Regil Llovera
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div id="miMensaje" class="p-2 flex-fill">
-                <div class="d-flex flex-row miImagen">
-                  <div class="p-2">
-                    <img src="imagenes/img3.jpg" class="pfp" />
-                  </div>
-                  <div class="p-2">
-                    <div class="d-flex flex-column">
-                      <p class="fs-4 p-1 fw-bold">Alojamiento Apodaca</p>
-                      <p class="text-muted fs-6" id="correo">
-                        En renta por: Brandon Dylan Regil Llovera
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <hr class="solid" />
-                <div class="list-group">
-                  <a
-                    href="#"
-                    class="list-group-item list-group-item-action bg-"
-                    aria-current="true"
-                  >
-                    <div
-                      class="miImagen misMensajes d-flex w-100 justify-content-between"
-                    >
-                      <div class="d-flex">
-                        <img
-                          src="imagenes/imagen-dario.png"
-                          class="pfp rounded-circle"
-                        />
-                        <div class="align-self-center">
-                          <p class="fs-6 p-3 fw-bold align-middle">Dario</p>
-                        </div>
-                      </div>
-                      <div class="align-self-start">
-                        <small class="text-muted p-3">9:17pm 23/Feb/2023</small>
-                      </div>
-                    </div>
-                    <hr class="solid" />
-                    <p class="mb-1">
-                      Buenas tardes quisiera rentar el inmueble
-                    </p>
-                  </a>
-                  <hr class="solid" />
-                  <a
-                    href="#"
-                    class="list-group-item list-group-item-action bg-"
-                    aria-current="true"
-                  >
-                    <div
-                      class="miImagen misMensajes d-flex w-100 justify-content-between"
-                    >
-                      <div class="d-flex">
-                        <img
-                          src="imagenes/avatar.jpg"
-                          class="pfp rounded-circle"
-                        />
-                        <div class="align-self-center">
-                          <p class="fs-6 p-3 fw-bold align-middle">
-                            WailyingDylan
-                          </p>
-                        </div>
-                      </div>
-                      <div class="align-self-start">
-                        <small class="text-muted p-3">8:35pm 22/Feb/2023</small>
-                      </div>
-                    </div>
-                    <hr class="solid" />
-                    <p class="mb-1">Por supuesto, esta disponible</p>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <form class="d-flex" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Escribe aqui tu mensaje"
-                aria-label="Buscar"
-              />
+		<!--  >MODAL WINDOW MENSAJES<-->
+		<div
+			class="modal fade"
+			id="miModalMensaje"
+			tabindex="-1"
+			aria-hidden="true"
+			aria-labelledby="modalTitle"
+			data-bs-backdrop="static"
+		>
+			<div
+				class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"
+			>
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="modalTitle">Chat</h4>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<div class="d-flex flex-row justify-content-between">
+							<div id="misChats">
+								<div class="list-group">
+									<a
+										href=""
+										class="list-group-item list-group-item-action"
+										aria-current="true"
+									>
+										<div class="d-flex flex-row miImagen chat">
+											<div class="p-2"><img src="imagenes/img1.jpg" /></div>
+											<div class="p-2">
+												<div class="d-flex flex-column">
+													<p class="fs-5 p-1 fw-bold">Alojamiento Encinos</p>
+													<p class="text-muted fs-6 fw-light" id="vendedor">
+														En renta por: Brandon Dylan Regil Llovera
+													</p>
+												</div>
+											</div>
+										</div>
+									</a>
+									<a
+										href=""
+										class="list-group-item list-group-item-action"
+										aria-current="true"
+									>
+										<div class="d-flex flex-row miImagen chat">
+											<div class="p-2"><img src="imagenes/img2.jpg" /></div>
+											<div class="p-2">
+												<div class="d-flex flex-column">
+													<p class="fs-5 p-1 fw-bold">Alojamiento Anahuac</p>
+													<p class="text-muted fs-6 fw-light" id="vendedor">
+														En renta por: Brandon Dylan Regil Llovera
+													</p>
+												</div>
+											</div>
+										</div>
+									</a>
+									<a
+										href="#"
+										class="list-group-item list-group-item-action"
+										aria-current="true"
+									>
+										<div class="d-flex flex-row miImagen chat">
+											<div class="p-2">
+												<img src="imagenes/img3.jpg" class="pfp" />
+											</div>
+											<div class="p-2">
+												<div class="d-flex flex-column">
+													<p class="fs-5 p-1 fw-bold">Alojamiento Apodaca</p>
+													<p class="text-muted fs-6 fw-light" id="vendedor">
+														En renta por: Brandon Dylan Regil Llovera
+													</p>
+												</div>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+							<div id="miMensaje" class="p-2 flex-fill">
+								<div class="d-flex flex-row miImagen">
+									<div class="p-2">
+										<img src="imagenes/img3.jpg" class="pfp" />
+									</div>
+									<div class="p-2">
+										<div class="d-flex flex-column">
+											<p class="fs-4 p-1 fw-bold">Alojamiento Apodaca</p>
+											<p class="text-muted fs-6" id="correo">
+												En renta por: Brandon Dylan Regil Llovera
+											</p>
+										</div>
+									</div>
+								</div>
+								<hr class="solid" />
+								<div class="list-group">
+									<a
+										href="#"
+										class="list-group-item list-group-item-action bg-"
+										aria-current="true"
+									>
+										<div
+											class="miImagen misMensajes d-flex w-100 justify-content-between"
+										>
+											<div class="d-flex">
+												<img
+													src="imagenes/imagen-dario.png"
+													class="pfp rounded-circle"
+												/>
+												<div class="align-self-center">
+													<p class="fs-6 p-3 fw-bold align-middle">Dario</p>
+												</div>
+											</div>
+											<div class="align-self-start">
+												<small class="text-muted p-3">9:17pm 23/Feb/2023</small>
+											</div>
+										</div>
+										<hr class="solid" />
+										<p class="mb-1">
+											Buenas tardes quisiera rentar el inmueble
+										</p>
+									</a>
+									<hr class="solid" />
+									<a
+										href="#"
+										class="list-group-item list-group-item-action bg-"
+										aria-current="true"
+									>
+										<div
+											class="miImagen misMensajes d-flex w-100 justify-content-between"
+										>
+											<div class="d-flex">
+												<img
+													src="imagenes/avatar.jpg"
+													class="pfp rounded-circle"
+												/>
+												<div class="align-self-center">
+													<p class="fs-6 p-3 fw-bold align-middle">
+														WailyingDylan
+													</p>
+												</div>
+											</div>
+											<div class="align-self-start">
+												<small class="text-muted p-3">8:35pm 22/Feb/2023</small>
+											</div>
+										</div>
+										<hr class="solid" />
+										<p class="mb-1">Por supuesto, esta disponible</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<form class="d-flex" role="search">
+							<input
+								class="form-control me-2"
+								type="search"
+								placeholder="Escribe aqui tu mensaje"
+								aria-label="Buscar"
+							/>
 
-              <button class="btn btn-outline-primary" type="submit">
-                <i class="bi bi-send"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+							<button class="btn btn-outline-primary" type="submit">
+								<i class="bi bi-send"></i>
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <!--  >MODAL WINDOW PERFIL<-->
-    <div
-      class="modal fade"
-      id="miModalPerfil"
-      tabindex="-1"
-      aria-hidden="true"
-      aria-labelledby="modalTitle"
-      data-bs-backdrop="static"
-    >
-      <div
-        class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"
-      >
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="modalTitle">Perfil</h4>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="container">
-              <hr class="solid" />
-              <div class="d-flex flex-row pfpPerfil">
-                <div class="p-1">
-                  <img src="imagenes/imagen-dario.png" class="rounded-circle" />
-                </div>
-                <div class="p-3">
-                  <div class="d-flex flex-column">
-                    <div class="d-flex justify-content-between">
-                      <p class="fs-4 p-1 fw-bold">Dario</p>
-                      <div>
-                        <button
-                          type="button"
-                          class="btn btn-primary"
-                          data-bs-dismiss="modal"
-                        >
-                          Editar
-                        </button>
-                      </div>
-                    </div>
-                    <p class="text-muted fw-bold fs-6 p-1">
-                      Joshua Dario de la Cruz Guerra
-                    </p>
-                    <p class="text-muted fs-6 p-1"><b>Edad:</b> 21</p>
-                    <p class="text-muted fs-6 p-1">
-                      <b>Ocupación:</b> Estudiante
-                    </p>
-                    <p class="text-muted fs-6 p-1">
-                      <b>Correo:</b> Dario123@gmail.com
-                    </p>
+		<!--  >MODAL WINDOW PERFIL<-->
+		<div
+			class="modal fade"
+			id="miModalPerfil"
+			tabindex="-1"
+			aria-hidden="true"
+			aria-labelledby="modalTitle"
+			data-bs-backdrop="static"
+		>
+			<div
+				class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"
+			>
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="modalTitle">Perfil</h4>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<div class="container">
+							<hr class="solid" />
+							<div class="d-flex flex-row pfpPerfil">
+								<div class="p-1">
+									<img src="imagenes/imagen-dario.png" class="rounded-circle" />
+								</div>
+								<div class="p-3">
+									<div class="d-flex flex-column">
+										<div class="d-flex justify-content-between">
+											<p class="fs-4 p-1 fw-bold">Dario</p>
+											<div>
+												<button
+													type="button"
+													class="btn btn-primary"
+													data-bs-dismiss="modal"
+												>
+													Editar
+												</button>
+											</div>
+										</div>
+										<p class="text-muted fw-bold fs-6 p-1">
+											Joshua Dario de la Cruz Guerra
+										</p>
+										<p class="text-muted fs-6 p-1"><b>Edad:</b> 21</p>
+										<p class="text-muted fs-6 p-1">
+											<b>Ocupación:</b> Estudiante
+										</p>
+										<p class="text-muted fs-6 p-1">
+											<b>Correo:</b> Dario123@gmail.com
+										</p>
 
-                    <hr class="solid" />
-                    <p class="fs-6 p-2" id="descripcion">
-                      Como estudiante en búsqueda de una casa en renta, busco
-                      una ubicación cerca de mi universidad y con un precio
-                      razonable. La seguridad y comodidad son esenciales, con
-                      una casa equipada con las comodidades básicas para
-                      centrarme en mis estudios. Busco un ambiente tranquilo y
-                      seguro con acceso a tiendas y supermercados. En resumen,
-                      busco una casa en renta asequible, cómoda y segura que
-                      esté convenientemente ubicada cerca de mi universidad y
-                      que cumpla con mis necesidades de estudio.
-                    </p>
-                  </div>
-                  <hr class="solid" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Regresar
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+										<hr class="solid" />
+										<p class="fs-6 p-2" id="descripcion">
+											Como estudiante en búsqueda de una casa en renta, busco
+											una ubicación cerca de mi universidad y con un precio
+											razonable. La seguridad y comodidad son esenciales, con
+											una casa equipada con las comodidades básicas para
+											centrarme en mis estudios. Busco un ambiente tranquilo y
+											seguro con acceso a tiendas y supermercados. En resumen,
+											busco una casa en renta asequible, cómoda y segura que
+											esté convenientemente ubicada cerca de mi universidad y
+											que cumpla con mis necesidades de estudio.
+										</p>
+									</div>
+									<hr class="solid" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button
+							type="button"
+							class="btn btn-secondary"
+							data-bs-dismiss="modal"
+						>
+							Regresar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

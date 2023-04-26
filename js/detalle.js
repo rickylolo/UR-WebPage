@@ -1,3 +1,13 @@
+$(document).ready(function () {
+  $('#rentarAlojamiento').on('click', function (event) {
+   if(confirm('¿Desea rentar este alojamiento?')){
+    alert('Alojamiento rentado correctamente')
+   }
+  })
+
+
+
+
 function iniciarDeslizador() {
   const deslizadorInterno = document.querySelector('.deslizador-interno')
   let contador = 0
@@ -27,3 +37,6 @@ function iniciarDeslizador() {
 
 // Iniciar el deslizador cuando se carga la página
 document.addEventListener('DOMContentLoaded', iniciarDeslizador)
+
+
+})
