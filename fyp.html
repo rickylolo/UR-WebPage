@@ -54,6 +54,9 @@
                             </li>
                             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#miModalMensaje">
                                     Mensajes</a></li>
+
+                            <li><a class="dropdown-item" href="alojamiento.html">
+                                    Alojamiento</a></li>
                             <div class="dropdown-divider"></div>
                             <li><a class="dropdown-item" href="index.html">Cerrar Sesión</a></li>
                         </ul>
@@ -70,19 +73,30 @@
         <hr class="solid">
         <div class="row fs-4 product-title"><b>Alojamientos cercanos a tu ubicación</b></div>
         <hr class="solid">
-        <ul class="nav nav-tabs justify-content-end">
+        <div class="d-flex justify-content-between">
 
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="">Todos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="buscarporEstado">Por estado</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="buscarporCiudad">Por ciudad</a>
-            </li>
+            <div class="d-flex">
+                <input class="form-control" type="search" placeholder="Buscar alojamiento" aria-label="Search">
+                <button class="btn btn-outline-success" type="button"><i class="bi bi-search"></i></button>
+            </div>
 
-        </ul>
+
+            <div>
+                <ul class="nav nav-tabs justify-content-end">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="">Todos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="buscarporEstado">Por estado</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="buscarporCiudad">Por ciudad</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
         <section class="post-list">
             <div class="content">
                 <article class="post">

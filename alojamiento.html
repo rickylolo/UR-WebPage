@@ -1,57 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ES">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNI-Rest | Detalle</title>
+    <title>UNI-Rest | Alojamiento</title>
     <link rel="icon" href="./imagenes/logo.png">
     <script src="js/jquery-3.6.0.js"></script>
-    <script src="js/detalle.js"></script>
+    <script src="js/fyp.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/popper.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/detalle.css">
+    <link rel="stylesheet" href="css/fyp.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <!-- <style>
-        .logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .logo img {
-            max-width: 200px;
-        }
-
-        .vendedor {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
-        }
-
-        .vendedor-info {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .vendedor-info img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-right: 20px;
-        }
-    </style> -->
-
-    <title>Vivienda Disponible</title>
 
 </head>
 
 <body>
+
     <nav class="navbar sticky-top navbar-expand-lg navbar-light">
         <div class="container">
             <img src="imagenes/logo.png " width="100px">
@@ -89,6 +54,7 @@
                             </li>
                             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#miModalMensaje">
                                     Mensajes</a></li>
+
                             <li><a class="dropdown-item" href="alojamiento.html">
                                     Alojamiento</a></li>
                             <div class="dropdown-divider"></div>
@@ -100,127 +66,194 @@
         </div>
     </nav>
 
-    <div class="container">
+
+
+    <!--                 Alojamientos        -->
+    <div class="container" id="misAlojamientos">
+
+
         <hr class="solid">
-        <div class="d-flex flex-row">
-            <div class="p-2">
-                <div class="card" style="width: 28rem;">
-                    <div class="deslizador">
-                        <div class="deslizador-interno">
-                            <img src="imagenes/img1.jpg" alt="Imagen 1">
-                            <img src="imagenes/img2.jpg" alt="Imagen 2">
-                            <img src="imagenes/img3.jpg" alt="Imagen 3">
-                            <img src="imagenes/img4.jpg" alt="Imagen 4">
-                            <img src="imagenes/img5.jpg" alt="Imagen 5">
-                            <img src="imagenes/img6.jpg" alt="Imagen 6">
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="fw-bold card-title">Alojamiento San Nicolás</h5>
-                        <p class="card-text text-end text-primary">
-                            $15,000.00 MXN Mensuales
-
-                        </p>
-                        <a href="" data-bs-toggle="modal" data-bs-target="#miModalMetodoPago"
-                            class="btn btn-primary d-flex justify-content-center">Rentar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="p-2 flex-fill shadow-sm">
-                <div class="d-flex flex-column">
-
-
-                    <div class="d-flex flex-column">
-                        <div class="d-flex justify-content-between">
-                            <p class="fs-3 p-1 fw-bolder">Alojamiento San Nicolás</p>
-                            <div>
-                                <div class="d-flex flex-row justify-content-end">
-                                    <span class="badge fs-6 rounded-pill bg-success">Disponible</span>
-
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <p class="text-end fs-6 fw-light text-secondary">En renta por: Brandon
-                            Dylan Regil Llovera
-                        </p>
-                    </div>
-                    <div>
-
-
-
-
-                    </div>
-                    <hr class="solid">
-                    <div class="p-2 fs-5 text-center text-muted">Características de la vivienda</div>
-                    <ul class="fs-6">
-                        <li>Casa de 2 pisos, color blanco</li>
-                        <li>Amplio patio y bonita zona verde en la parte de atrás</li>
-                        <li>2 cuartos, 1 con baño propio</li>
-                    </ul>
-                    <hr class="solid">
-
-                    <div class="p-2 fs-5 text-center text-muted">Dirección</div>
-                    <div class="text-start ms-4">
-                        Calle Bugambilia 1899, San Nicolás de los Garza, Nuevo León, México.
-                    </div>
-                    <hr class="solid">
-
-                    <div class="p-2 fs-5 text-center text-muted">Vendedor</div>
-                    <div class="d-flex flex-row pfpPerfil">
-                        <div class="p-1"><img src="imagenes/avatar.jpg" class="rounded-circle">
-                        </div>
-                        <div class="p-3">
-                            <div class="d-flex flex-column">
-                                <div class="d-flex justify-content-between">
-                                    <p class="fs-4 p-1 fw-bold">WailyngDylan</p>
-                                    <div><button type="button" class="btn btn-primary">Enviar
-                                            Mensaje</button></div>
-                                </div>
-                                <p class="text-muted fw-bold fs-6 p-1">Brandon Dylan Regil Llovera
-                                </p>
-                                <p class="text-muted fs-6 p-1"><b>Edad:</b> 22</p>
-                                <p class="text-muted fs-6 p-1"><b>Ocupación:</b> Estudiante</p>
-                                <p class="text-muted fs-6 p-1"><b>Correo:</b> wailiyng@gmail.com</p>
-
-
-
-                                <hr class="solid">
-                                <p class="fs-6 p-2" id="descripcion">Como rentador de inmuebles, me enorgullece ofrecer
-                                    propiedades de alta calidad y servicios excepcionales a mis clientes.
-                                    Me enfoco en brindar a los inquilinos una experiencia cómoda y satisfactoria en cada
-                                    propiedad que administro.
-
-                                    Mi objetivo es ayudar a los inquilinos a encontrar la casa perfecta para sus
-                                    necesidades y presupuesto. Ofrezco una
-                                    variedad de opciones de casas en renta en ubicaciones seguras y convenientes, con
-                                    todas las comodidades necesarias para
-                                    vivir cómodamente.
-
-                                    También me aseguro de mantener una comunicación fluida con los inquilinos, responder
-                                    a cualquier pregunta o preocupación
-                                    en un plazo razonable y proporcionar un servicio de mantenimiento eficiente para
-                                    mantener las propiedades en excelentes
-                                    condiciones.
-
-                                    En general, mi compromiso es brindar un servicio de renta de inmuebles profesional y
-                                    de alta calidad, y asegurarme de
-                                    que los inquilinos tengan una experiencia cómoda y satisfactoria durante su estancia
-                                    en nuestras propiedades.</p>
-
-
-
-                            </div>
-                            <hr class="solid">
-                        </div>
-
-                    </div>
-
-                </div>
+        <div class="d-flex justify-content-between">
+            <div class="row fs-4"><b>Mis alojamientos</b></div>
+            <div class="d-flex">
+                <input class="form-control" type="search" placeholder="Buscar alojamiento" aria-label="Search">
+                <button class="btn btn-outline-success" type="button"><i class="bi bi-search"></i></button>
             </div>
         </div>
+
+        <hr class="solid">
+        <div class="d-flex justify-content-center">
+
+
+            <div>
+                <ul class="nav nav-tabs justify-content-end">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="">Mis alojamientos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="buscarporEstado">Mis rentas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-success" id="añadirAlojamiento" data-bs-toggle="modal"
+                            data-bs-target="#miModalAlojamiento">Añadir alojamiento</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+        <section class="post-list">
+            <div class="content">
+                <article class="post">
+                    <div class="post-header">
+                        <a href="detalle.html">
+                            <img src="imagenes/img1.jpg" class="post-img">
+                        </a>
+                    </div>
+                    <div class="post-body">
+                        <h4><b>Alojamiento Los Encinos</b></h4>
+                        <span>En renta por :<div class="vendedor">Brandon Dylan Regil Llovera</div></span><br>
+                        <div class="d-flex justify-content-center abcAlojamiento">
+                            <p class="mb-1"><button type="button" class="btn btn-success"><i
+                                        class="bi bi-search"></i></button>
+                            </p>
+                            <p class="mb-1"><button type="button" class="btn btn-primary"><i
+                                        class="bi bi-pen"></i></button>
+                            </p>
+                            <p class="mb-1"><button type="button" class="btn btn-danger"><i
+                                        class="bi bi-trash"></i></button></p>
+
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post">
+                    <div class="post-header">
+                        <a href="detalle.html">
+                            <img src="imagenes/img2.jpg" class="post-img">
+                        </a>
+                    </div>
+                    <div class="post-body">
+                        <h4><b>Alojamiento Anahuac</b></h4>
+                        <span>En renta por :<div class="vendedor">Brandon Dylan Regil Llovera</div></span><br>
+                        <div class="d-flex justify-content-center abcAlojamiento">
+                            <p class="mb-1"><button type="button" class="btn btn-success"><i
+                                        class="bi bi-search"></i></button>
+                            </p>
+                            <p class="mb-1"><button type="button" class="btn btn-primary"><i
+                                        class="bi bi-pen"></i></button>
+                            </p>
+                            <p class="mb-1"><button type="button" class="btn btn-danger"><i
+                                        class="bi bi-trash"></i></button></p>
+
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post">
+                    <div class="post-header">
+                        <a href="detalle.html">
+                            <img src="imagenes/img3.jpg" class="post-img">
+                        </a>
+                    </div>
+                    <div class="post-body">
+                        <h4><b>Alojamiento Apodaca</b></h4>
+                        <span>En renta por :<div class="vendedor">Brandon Dylan Regil Llovera</div></span><br>
+                        <div class="d-flex justify-content-center abcAlojamiento">
+                            <p class="mb-1"><button type="button" class="btn btn-success"><i
+                                        class="bi bi-search"></i></button>
+                            </p>
+                            <p class="mb-1"><button type="button" class="btn btn-primary"><i
+                                        class="bi bi-pen"></i></button>
+                            </p>
+                            <p class="mb-1"><button type="button" class="btn btn-danger"><i
+                                        class="bi bi-trash"></i></button></p>
+
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post">
+                    <div class="post-header">
+                        <a href="detalle.html">
+                            <img src="imagenes/img4.jpg" class="post-img">
+                        </a>
+                    </div>
+                    <div class="post-body">
+                        <h4><b>Alojamiento San Nicolás</b></h4>
+                        <span>En renta por :<div class="vendedor">Brandon Dylan Regil Llovera</div></span><br>
+                        <div class="d-flex justify-content-center abcAlojamiento">
+                            <p class="mb-1"><button type="button" class="btn btn-success"><i
+                                        class="bi bi-search"></i></button>
+                            </p>
+                            <p class="mb-1"><button type="button" class="btn btn-primary"><i
+                                        class="bi bi-pen"></i></button>
+                            </p>
+                            <p class="mb-1"><button type="button" class="btn btn-danger"><i
+                                        class="bi bi-trash"></i></button></p>
+
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post">
+                    <div class="post-header">
+                        <a href="detalle.html">
+                            <img src="imagenes/img5.jpg" class="post-img">
+                        </a>
+                    </div>
+                    <div class="post-body">
+                        <h4><b>Alojamiento Guadalupe</b></h4>
+                        <span>En renta por :<div class="vendedor">Brandon Dylan Regil Llovera</div></span><br>
+                        <div class="d-flex justify-content-center abcAlojamiento">
+                            <p class="mb-1"><button type="button" class="btn btn-success"><i
+                                        class="bi bi-search"></i></button>
+                            </p>
+                            <p class="mb-1"><button type="button" class="btn btn-primary"><i
+                                        class="bi bi-pen"></i></button>
+                            </p>
+                            <p class="mb-1"><button type="button" class="btn btn-danger"><i
+                                        class="bi bi-trash"></i></button></p>
+
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post">
+                    <div class="post-header">
+                        <a href="detalle.html">
+                            <img src="imagenes/img6.jpg" class="post-img">
+                        </a>
+                    </div>
+                    <div class="post-body">
+                        <h4><b>Alojamiento San Pedro</b></h4>
+                        <span>En renta por :<div class="vendedor">Brandon Dylan Regil Llovera</div></span><br>
+                        <div class="d-flex justify-content-center abcAlojamiento">
+                            <p class="mb-1"><button type="button" class="btn btn-success"><i
+                                        class="bi bi-search"></i></button>
+                            </p>
+                            <p class="mb-1"><button type="button" class="btn btn-primary"><i
+                                        class="bi bi-pen"></i></button>
+                            </p>
+                            <p class="mb-1"><button type="button" class="btn btn-danger"><i
+                                        class="bi bi-trash"></i></button></p>
+
+                        </div>
+                    </div>
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
     </div>
+
+
+
 
     <!--  >MODAL WINDOW MENSAJES<-->
     <div class="modal fade" id="miModalMensaje" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle"
@@ -405,6 +438,97 @@
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Regresar</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  >MODAL ALOJAMIENTO<-->
+    <div class="modal fade" id="miModalAlojamiento" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle"
+        data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Alojamiento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post">
+                    <div class="modal-body p-5">
+
+                        <div class="fs-5 text-center fw-bold pb-4">Ingresa los datos:</div>
+                        <div class="form-outline">
+                            <input type="text" id="form3Example3" class="form-control" />
+                            <label class="form-label" for="form3Example3">Nombre del alojamiento</label>
+                        </div>
+
+                        <div class="form-outline">
+                            <textarea class="form-control" aria-label="caracts"></textarea>
+                            <label class="form-label" for="form3Example4">Características</label>
+                        </div>
+                        <hr class="solid">
+
+                        <div class="form-outline">
+                            <input type="file" class="form-control" aria-label="imagen"></textarea>
+                            <label class="form-label" for="form3Example5">Imagen</label>
+                        </div>
+
+
+                        <hr class="solid">
+                        <div class="fs-6 text-center fw-bold pb-4">Dirección:</div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="text" id="form3Example1" class="form-control" />
+                                    <label class="form-label" for="form3Example1">País</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="text" id="form3Example2" class="form-control" />
+                                    <label class="form-label" for="form3Example2">Estado</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="text" id="form3Example1" class="form-control" />
+                                    <label class="form-label" for="form3Example1">Ciudad</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="text" id="form3Example2" class="form-control" />
+                                    <label class="form-label" for="form3Example2">Colonia</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="text" id="form3Example1" class="form-control" />
+                                    <label class="form-label" for="form3Example1">Número Int.</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-outline">
+                                    <input type="text" id="form3Example2" class="form-control" />
+                                    <label class="form-label" for="form3Example2">Código Postal</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" id="BtnRegistrarAlojamiento"
+                            data-bs-dismiss="modal">Añadir
+                            Alojamiento</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
