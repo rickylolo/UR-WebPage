@@ -6,7 +6,7 @@
     <title>UNI-Rest | Alojamiento</title>
     <link rel="icon" href="./imagenes/logo.png">
     <script src="js/jquery-3.6.0.js"></script>
-    <script src="js/fyp.js"></script>
+    <script src="js/alojamiento.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/popper.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -18,52 +18,83 @@
 <body>
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-light">
-        <div class="container">
-            <img src="imagenes/logo.png " width="100px">
-            <a class="navbar-brand fs-4 fw-bold p-4" href="fyp.html">UNI-Rest</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                </ul>
-                <div id="perfil">
-                    <div class="d-flex flex-column dropstart misDatosUsuario">
-                        <div class="miImagen dropdown p-2 mx-auto" id="DatosUser" data-bs-toggle="dropdown"
-                            aria-expanded="false"><img src="imagenes/imagen-dario.png" class="rounded-circle">
-                        </div>
-                        <ul class="dropdown-menu" aria-labelledby="DatosUser">
-                            <li class="misDatosUser">
-                                <div class="d-flex flex-row miImagen">
-                                    <div class="p-2"><img src="imagenes/imagen-dario.png" class="rounded-circle">
-                                    </div>
-                                    <div class="p-2">
-                                        <div class="d-flex flex-column">
-                                            <p class="fs-5 p-1 fw-bold">Dario</p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <div class="dropdown-divider"></div>
-                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#miModalPerfil">
-                                    Perfil</a>
-                            </li>
-                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#miModalMensaje">
-                                    Mensajes</a></li>
-
-                            <li><a class="dropdown-item" href="alojamiento.html">
-                                    Alojamiento</a></li>
-                            <div class="dropdown-divider"></div>
-                            <li><a class="dropdown-item" href="index.html">Cerrar Sesión</a></li>
-                        </ul>
+      <div class="container">
+        <img src="imagenes/logo.png " width="100px" />
+        <a class="navbar-brand fs-4 fw-bold p-4" href="fyp.html">UNI-Rest</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+          <div id="perfil">
+            <div class="d-flex flex-column dropstart misDatosUsuario">
+              <div
+                class="dropdown p-2 mx-auto"
+                id="NavPerfil"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img src="imagenes/imagen-dario.png" class="rounded-circle" />
+              </div>
+              <ul class="dropdown-menu" aria-labelledby="DatosUser">
+                <li class="misDatosUser">
+                  <div class="d-flex flex-row miImagen">
+                    <div class="p-2">
+                      <img
+                        src="imagenes/imagen-dario.png"
+                        class="rounded-circle"
+                      />
                     </div>
-                </div>
+                    <div class="p-2">
+                      <div class="d-flex flex-column">
+                        <p class="fs-5 p-1 fw-bold">Dario</p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <div class="dropdown-divider"></div>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#miModalPerfil"
+                  >
+                    Perfil</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#miModalMensaje"
+                  >
+                    Mensajes</a
+                  >
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="alojamiento.html">
+                    Alojamiento</a
+                  >
+                </li>
+                <div class="dropdown-divider"></div>
+                <li>
+                  <a class="dropdown-item" href="index.html">Cerrar Sesión</a>
+                </li>
+              </ul>
             </div>
+          </div>
         </div>
+      </div>
     </nav>
 
 
@@ -108,86 +139,18 @@
                 <article class="post">
                     <div class="post-header">
                         <a href="detalle.html">
-                            <img src="imagenes/img1.jpg" class="post-img">
-                        </a>
-                    </div>
-                    <div class="post-body">
-                        <h4><b>Alojamiento Los Encinos</b></h4>
-                        <span>En renta por :<div class="vendedor">Brandon Dylan Regil Llovera</div></span><br>
-                        <div class="d-flex justify-content-center abcAlojamiento">
-                            <p class="mb-1"><button type="button" class="btn btn-success"><i
-                                        class="bi bi-search"></i></button>
-                            </p>
-                            <p class="mb-1"><button type="button" class="btn btn-primary"><i
-                                        class="bi bi-pen"></i></button>
-                            </p>
-                            <p class="mb-1"><button type="button" class="btn btn-danger"><i
-                                        class="bi bi-trash"></i></button></p>
-
-                        </div>
-                    </div>
-                </article>
-
-                <article class="post">
-                    <div class="post-header">
-                        <a href="detalle.html">
-                            <img src="imagenes/img2.jpg" class="post-img">
-                        </a>
-                    </div>
-                    <div class="post-body">
-                        <h4><b>Alojamiento Anahuac</b></h4>
-                        <span>En renta por :<div class="vendedor">Brandon Dylan Regil Llovera</div></span><br>
-                        <div class="d-flex justify-content-center abcAlojamiento">
-                            <p class="mb-1"><button type="button" class="btn btn-success"><i
-                                        class="bi bi-search"></i></button>
-                            </p>
-                            <p class="mb-1"><button type="button" class="btn btn-primary"><i
-                                        class="bi bi-pen"></i></button>
-                            </p>
-                            <p class="mb-1"><button type="button" class="btn btn-danger"><i
-                                        class="bi bi-trash"></i></button></p>
-
-                        </div>
-                    </div>
-                </article>
-
-                <article class="post">
-                    <div class="post-header">
-                        <a href="detalle.html">
-                            <img src="imagenes/img3.jpg" class="post-img">
-                        </a>
-                    </div>
-                    <div class="post-body">
-                        <h4><b>Alojamiento Apodaca</b></h4>
-                        <span>En renta por :<div class="vendedor">Brandon Dylan Regil Llovera</div></span><br>
-                        <div class="d-flex justify-content-center abcAlojamiento">
-                            <p class="mb-1"><button type="button" class="btn btn-success"><i
-                                        class="bi bi-search"></i></button>
-                            </p>
-                            <p class="mb-1"><button type="button" class="btn btn-primary"><i
-                                        class="bi bi-pen"></i></button>
-                            </p>
-                            <p class="mb-1"><button type="button" class="btn btn-danger"><i
-                                        class="bi bi-trash"></i></button></p>
-
-                        </div>
-                    </div>
-                </article>
-
-                <article class="post">
-                    <div class="post-header">
-                        <a href="detalle.html">
                             <img src="imagenes/img4.jpg" class="post-img">
                         </a>
                     </div>
                     <div class="post-body">
                         <h4><b>Alojamiento San Nicolás</b></h4>
-                        <span>En renta por :<div class="vendedor">Brandon Dylan Regil Llovera</div></span><br>
+                        <span>Propietario:<div class="vendedor">Joshua Dario de la Cruz Guerra</div></span><br>
                         <div class="d-flex justify-content-center abcAlojamiento">
-                            <p class="mb-1"><button type="button" class="btn btn-success"><i
+                            <p class="mb-1 verDetalle"><button type="button" class="btn btn-success"><i
                                         class="bi bi-search"></i></button>
                             </p>
-                            <p class="mb-1"><button type="button" class="btn btn-primary"><i
+                            <p class="mb-1" data-bs-toggle="modal"
+                            data-bs-target="#miModalEditarAlojamiento"><button type="button" class="btn btn-primary"><i
                                         class="bi bi-pen"></i></button>
                             </p>
                             <p class="mb-1"><button type="button" class="btn btn-danger"><i
@@ -205,12 +168,13 @@
                     </div>
                     <div class="post-body">
                         <h4><b>Alojamiento Guadalupe</b></h4>
-                        <span>En renta por :<div class="vendedor">Brandon Dylan Regil Llovera</div></span><br>
+                        <span>Propietario:<div class="vendedor">Joshua Dario de la Cruz Guerra</div></span><br>
                         <div class="d-flex justify-content-center abcAlojamiento">
-                            <p class="mb-1"><button type="button" class="btn btn-success"><i
+                            <p class="mb-1 verDetalle"><button type="button" class="btn btn-success"><i
                                         class="bi bi-search"></i></button>
                             </p>
-                            <p class="mb-1"><button type="button" class="btn btn-primary"><i
+                            <p class="mb-1" data-bs-toggle="modal"
+                            data-bs-target="#miModalEditarAlojamiento" ><button type="button" class="btn btn-primary"><i
                                         class="bi bi-pen"></i></button>
                             </p>
                             <p class="mb-1"><button type="button" class="btn btn-danger"><i
@@ -228,12 +192,13 @@
                     </div>
                     <div class="post-body">
                         <h4><b>Alojamiento San Pedro</b></h4>
-                        <span>En renta por :<div class="vendedor">Brandon Dylan Regil Llovera</div></span><br>
+                        <span>Propietario:<div class="vendedor">Joshua Dario de la Cruz Guerra</div></span><br>
                         <div class="d-flex justify-content-center abcAlojamiento">
-                            <p class="mb-1"><button type="button" class="btn btn-success"><i
+                            <p class="mb-1 verDetalle"><button type="button" class="btn btn-success"><i
                                         class="bi bi-search"></i></button>
                             </p>
-                            <p class="mb-1"><button type="button" class="btn btn-primary"><i
+                            <p class="mb-1" data-bs-toggle="modal"
+                            data-bs-target="#miModalEditarAlojamiento"><button type="button" class="btn btn-primary"><i
                                         class="bi bi-pen"></i></button>
                             </p>
                             <p class="mb-1"><button type="button" class="btn btn-danger"><i
@@ -276,7 +241,7 @@
                                         <div class="p-2">
                                             <div class="d-flex flex-column">
                                                 <p class="fs-5 p-1 fw-bold">Alojamiento Encinos</p>
-                                                <p class="text-muted fs-6 fw-light" id="vendedor">En renta por: Brandon
+                                                <p class="text-muted fs-6 fw-light" id="vendedor">Propietario: Brandon
                                                     Dylan
                                                     Regil Llovera</p>
                                             </div>
@@ -290,7 +255,7 @@
                                         <div class="p-2">
                                             <div class="d-flex flex-column">
                                                 <p class="fs-5 p-1 fw-bold">Alojamiento Anahuac</p>
-                                                <p class="text-muted fs-6 fw-light" id="vendedor">En renta por: Brandon
+                                                <p class="text-muted fs-6 fw-light" id="vendedor">Propietario: Brandon
                                                     Dylan
                                                     Regil Llovera</p>
                                             </div>
@@ -304,7 +269,7 @@
                                         <div class="p-2">
                                             <div class="d-flex flex-column">
                                                 <p class="fs-5 p-1 fw-bold">Alojamiento Apodaca</p>
-                                                <p class="text-muted fs-6 fw-light" id="vendedor">En renta por: Brandon
+                                                <p class="text-muted fs-6 fw-light" id="vendedor">Propietario: Brandon
                                                     Dylan
                                                     Regil Llovera</p>
                                             </div>
@@ -320,7 +285,7 @@
                                 <div class="p-2">
                                     <div class="d-flex flex-column">
                                         <p class="fs-4 p-1 fw-bold">Alojamiento Apodaca</p>
-                                        <p class="text-muted fs-6" id="correo">En renta por: Brandon Dylan
+                                        <p class="text-muted fs-6" id="correo">Propietario: Brandon Dylan
                                             Regil Llovera</p>
                                     </div>
                                 </div>
@@ -456,67 +421,31 @@
 
                         <div class="fs-5 text-center fw-bold pb-4">Ingresa los datos:</div>
                         <div class="form-outline">
+                             <label class="form-label" for="form3Example3">Nombre del alojamiento</label>
                             <input type="text" id="form3Example3" class="form-control" />
-                            <label class="form-label" for="form3Example3">Nombre del alojamiento</label>
+                           
                         </div>
 
-                        <div class="form-outline">
-                            <textarea class="form-control" aria-label="caracts"></textarea>
-                            <label class="form-label" for="form3Example4">Características</label>
+                        <div class="form-outline pt-4">
+                              <label class="form-label" for="form3Example4">Características</label>
+                            <textarea class="form-control" rows="5" aria-label="caracts"></textarea>
+                          
                         </div>
-                        <hr class="solid">
+                           <hr class="solid">
+                        <div class="fs-6 text-center fw-bold pb-4">Imagen:</div>
 
                         <div class="form-outline">
                             <input type="file" class="form-control" aria-label="imagen"></textarea>
-                            <label class="form-label" for="form3Example5">Imagen</label>
+                        
                         </div>
 
 
                         <hr class="solid">
                         <div class="fs-6 text-center fw-bold pb-4">Dirección:</div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-outline">
-                                    <input type="text" id="form3Example1" class="form-control" />
-                                    <label class="form-label" for="form3Example1">País</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-outline">
-                                    <input type="text" id="form3Example2" class="form-control" />
-                                    <label class="form-label" for="form3Example2">Estado</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-outline">
-                                    <input type="text" id="form3Example1" class="form-control" />
-                                    <label class="form-label" for="form3Example1">Ciudad</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-outline">
-                                    <input type="text" id="form3Example2" class="form-control" />
-                                    <label class="form-label" for="form3Example2">Colonia</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-outline">
-                                    <input type="text" id="form3Example1" class="form-control" />
-                                    <label class="form-label" for="form3Example1">Número Int.</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-outline">
-                                    <input type="text" id="form3Example2" class="form-control" />
-                                    <label class="form-label" for="form3Example2">Código Postal</label>
-                                </div>
-                            </div>
+                   
+                        <div class="form-outline">
+                            <input type="text" id="form3Example5" class="form-control" />
+                          
                         </div>
 
 
@@ -525,6 +454,56 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" id="BtnRegistrarAlojamiento"
                             data-bs-dismiss="modal">Añadir
+                            Alojamiento</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    <!--  >MODAL EDITAR ALOJAMIENTO<-->
+    <div class="modal fade" id="miModalEditarAlojamiento" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle"
+        data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Editar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post">
+                    <div class="modal-body p-5">
+
+                        <div class="fs-5 text-center fw-bold pb-4">Ingresa los datos:</div>
+                        <div class="form-outline">
+                            <label class="form-label" for="form3Example3">Nombre</label>
+                            <input type="text" id="form3Example3" value="Alojamiento San Nicolás" class="form-control" />
+                            
+                        </div>
+
+                        <div class="form-outline pt-4">
+                             <label class="form-label" for="form3Example4">Características</label>
+                            <textarea class="form-control" rows="5" aria-label="caracts">Casa de 2 pisos, color blanco, Amplio patio y bonita zona verde en la parte de atrás 2 cuartos, 1 con baño propio</textarea>
+                           
+                        </div>
+                        <hr class="solid">
+                        <div class="fs-6 text-center fw-bold pb-4">Dirección:</div>
+                   
+                        <div class="form-outline">
+                            <input type="text" value="Calle Bugambilia 1899, San Nicolás de los Garza, Nuevo León, México." id="form3Example5" class="form-control" />
+                          
+                        </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                          <button type="button" class="btn btn-success" id="BtnAgregarImagen"
+                            data-bs-dismiss="modal">Agregar 
+                            Imagen</button>
+                        <button type="button" class="btn btn-primary" id="BtnActualizarAlojamiento"
+                            data-bs-dismiss="modal">Actualizar
                             Alojamiento</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
