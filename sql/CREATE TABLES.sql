@@ -32,6 +32,7 @@ CREATE TABLE Alojamiento(
 	imagenAlojamiento		MEDIUMBLOB,
     direccion 				TEXT,
     isOcupado				BIT DEFAULT 0,
+    renta 					DECIMAL(9,2) UNSIGNED NOT NULL,
     
  CONSTRAINT PK_Alojamiento
 	PRIMARY KEY (Alojamiento_id),

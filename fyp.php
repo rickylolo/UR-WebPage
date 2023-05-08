@@ -74,6 +74,9 @@ session_start(); // Inicio mi sesion PHP
 	</nav>
 
 	<!--                 Alojamientos        -->
+	<div class="container" id="detalleAlojamiento">
+		
+	</div>
 	<div class="container" id="misAlojamientos">
 		<hr class="solid" />
 		<div class="row fs-4 product-title">
@@ -89,96 +92,8 @@ session_start(); // Inicio mi sesion PHP
 			</div>
 		</div>
 		<section class="post-list">
-			<div class="content">
-				<article class="post">
-					<div class="post-header">
-						<a href="detalle.php">
-							<img src="imagenes/img1.jpg" class="post-img" />
-						</a>
-					</div>
-					<div class="post-body">
-						<h4><b>Alojamiento Los Encinos</b></h4>
-						<span>Propietario
-							<div class="vendedor">Brandon Dylan Regil Llovera</div>
-						</span><br />
-						<div class="btn btn-orange">Ver alojamiento</div>
-					</div>
-				</article>
+			<div class="content" id="AlojamientosFYP">
 
-				<article class="post">
-					<div class="post-header">
-						<a href="detalle.php">
-							<img src="imagenes/img2.jpg" class="post-img" />
-						</a>
-					</div>
-					<div class="post-body">
-						<h4><b>Alojamiento Anahuac</b></h4>
-						<span>Propietario
-							<div class="vendedor">Brandon Dylan Regil Llovera</div>
-						</span><br />
-						<div class="btn btn-orange">Ver alojamiento</div>
-					</div>
-				</article>
-
-				<article class="post">
-					<div class="post-header">
-						<a href="detalle.php">
-							<img src="imagenes/img3.jpg" class="post-img" />
-						</a>
-					</div>
-					<div class="post-body">
-						<h4><b>Alojamiento Apodaca</b></h4>
-						<span>Propietario
-							<div class="vendedor">Brandon Dylan Regil Llovera</div>
-						</span><br />
-						<div class="btn btn-orange">Ver alojamiento</div>
-					</div>
-				</article>
-
-				<article class="post">
-					<div class="post-header">
-						<a href="producto.php">
-							<img src="imagenes/img4.jpg" class="post-img" />
-						</a>
-					</div>
-					<div class="post-body">
-						<h4><b>Alojamiento San Nicolás</b></h4>
-						<span>Propietario
-							<div class="vendedor">Joshua Dario de la Cruz Guerra</div>
-						</span><br />
-						<div class="btn btn-orange">Ver alojamiento</div>
-					</div>
-				</article>
-
-				<article class="post">
-					<div class="post-header">
-						<a href="detalle.php">
-							<img src="imagenes/img5.jpg" class="post-img" />
-						</a>
-					</div>
-					<div class="post-body">
-						<h4><b>Alojamiento Guadalupe</b></h4>
-						<span>Propietario
-							<div class="vendedor">Joshua Dario de la Cruz Guerra</div>
-						</span><br />
-						<div class="btn btn-orange">Ver alojamiento</div>
-					</div>
-				</article>
-
-				<article class="post">
-					<div class="post-header">
-						<a href="detalle.php">
-							<img src="imagenes/img6.jpg" class="post-img" />
-						</a>
-					</div>
-					<div class="post-body">
-						<h4><b>Alojamiento San Pedro</b></h4>
-						<span>Propietario
-							<div class="vendedor">Joshua Dario de la Cruz Guerra</div>
-						</span><br />
-						<div class="btn btn-orange">Ver alojamiento</div>
-					</div>
-				</article>
 			</div>
 		</section>
 	</div>

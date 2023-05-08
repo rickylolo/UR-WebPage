@@ -3,6 +3,16 @@ $(document).ready(function () {
     window.location.replace('detalle.html')
   })
 
+  $('#misRentasVer').click(function () {
+    $('#misAlojamientosVer').removeClass('active')
+    $(this).addClass('active')
+  })
+
+  $('#misAlojamientosVer').click(function () {
+    $('#misRentasVer').removeClass('active')
+    $(this).addClass('active')
+  })
+
   $('#misRentas').hide()
 
   function mostrarRentas() {
@@ -107,6 +117,7 @@ $(document).ready(function () {
         $('#editarNombreAlojamiento').val(items[0].nombre)
         $('#editarCaracteristicasAlojamiento').val(items[0].caracteristicas)
         $('#editarDireccionAlojamiento').val(items[0].direccion)
+        $('#editarRentaAlojamiento').val(items[0].renta)
       })
       .fail(function (data) {
         console.error(data)
@@ -135,12 +146,14 @@ $(document).ready(function () {
       '#registroCaracteristicasAlojamiento'
     ).val()
     var direccionAlojamiento = $('#registroDireccionAlojamiento').val()
+    var costoAlojamiento = $('#registroRentaAlojamiento').val()
 
     form_data.append('file', file_data)
     form_data.append('funcion', 'registrarAlojamiento')
     form_data.append('Nombre', nombreAlojamiento)
     form_data.append('Caracteristicas', caracteristicasAlojamiento)
     form_data.append('Direccion', direccionAlojamiento)
+    form_data.append('Renta', costoAlojamiento)
     $.ajax({
       url: 'php/Alojamiento.php',
       type: 'POST',
@@ -151,11 +164,12 @@ $(document).ready(function () {
       enctype: 'multipart/form-data',
       processData: false,
     })
-      .done(function () {
+      .done(function (data) {
         $('#registroNombreAlojamiento').val('')
         $('#registroImagenAlojamiento').val('')
         $('#registroCaracteristicasAlojamiento').val('')
         $('#registroDireccionAlojamiento').val('')
+        $('#registroRentaAlojamiento').val('')
         cargarDatosMisAlojamientos()
         alert('Registro de alojamiento correctamente')
       })
@@ -177,6 +191,7 @@ $(document).ready(function () {
       '#editarCaracteristicasAlojamiento'
     ).val()
     var direccionAlojamiento = $('#editarDireccionAlojamiento').val()
+    var costoAlojamiento = $('#editarRentaAlojamiento').val()
 
     form_data.append('file', file_data)
     form_data.append('funcion', 'actualizarAlojamiento')
@@ -184,6 +199,7 @@ $(document).ready(function () {
     form_data.append('Nombre', nombreAlojamiento)
     form_data.append('Caracteristicas', caracteristicasAlojamiento)
     form_data.append('Direccion', direccionAlojamiento)
+    form_data.append('Renta', costoAlojamiento)
     $.ajax({
       url: 'php/Alojamiento.php',
       type: 'POST',
@@ -195,12 +211,12 @@ $(document).ready(function () {
       processData: false,
     })
       .done(function (data) {
-        console.log(data)
         $('#miAlojamientoSeleccionado').val('')
         $('#editarImagenAlojamiento').val('')
         $('#editarNombreAlojamiento').val('')
         $('#editarCaracteristicasAlojamiento').val('')
         $('#editarDireccionAlojamiento').val('')
+        $('#editarRentaAlojamiento').val('')
         cargarDatosMisAlojamientos()
         alert('Alojamiento actualizado correctamente')
       })

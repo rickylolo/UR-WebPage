@@ -21,12 +21,14 @@ class AlojamientoAPI
             while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
                 $obj = array(
                     "Alojamiento_id" => $row['Alojamiento_id'],
+                    "UsuarioVendedor_id" => $row['UsuarioVendedor_id'],
                     "nombre" => $row['nombre'],
                     "caracteristicas" => $row['caracteristicas'],
                     "imagenAlojamiento" => base64_encode(($row['imagenAlojamiento'])),
                     "direccion" => $row['direccion'],
                     "isOcupado" => $row['isOcupado'],
-                    "nombreCompleto" => $row['nombreCompleto']
+                    "nombreCompleto" => $row['nombreCompleto'],
+                    "renta" => $row['renta']
                 );
                 array_push($arrAlojamientos["Datos"], $obj);
             }
@@ -54,7 +56,8 @@ class AlojamientoAPI
                     "imagenAlojamiento" => base64_encode(($row['imagenAlojamiento'])),
                     "direccion" => $row['direccion'],
                     "isOcupado" => $row['isOcupado'],
-                    "nombreCompleto" => $row['nombreCompleto']
+                    "nombreCompleto" => $row['nombreCompleto'],
+                    "renta" => $row['renta']
                 );
                 array_push($arrAlojamientos["Datos"], $obj);
             }
@@ -82,7 +85,8 @@ class AlojamientoAPI
                     "imagenAlojamiento" => base64_encode(($row['imagenAlojamiento'])),
                     "direccion" => $row['direccion'],
                     "isOcupado" => $row['isOcupado'],
-                    "nombreCompleto" => $row['nombreCompleto']
+                    "nombreCompleto" => $row['nombreCompleto'],
+                    "renta" => $row['renta']
                 );
                 array_push($arrAlojamientos["Datos"], $obj);
             }
@@ -93,16 +97,16 @@ class AlojamientoAPI
         }
     }
 
-    function insertarAlojamiento($UsuarioVendedor_id,$Nombre,$Caracteristicas,$Imagen,$Direccion)
+    function insertarAlojamiento($UsuarioVendedor_id,$Nombre,$Caracteristicas,$Imagen,$Direccion,$Renta)
     {
         $Alojamiento = new Alojamiento();
-        $Alojamiento->insertarAlojamiento($UsuarioVendedor_id,$Nombre,$Caracteristicas,$Imagen,$Direccion);
+        $Alojamiento->insertarAlojamiento($UsuarioVendedor_id,$Nombre,$Caracteristicas,$Imagen,$Direccion,$Renta);
     }
 
-    function actualizarAlojamiento($Alojamiento_id,$Nombre,$Caracteristicas,$Imagen,$Direccion)
+    function actualizarAlojamiento($Alojamiento_id,$Nombre,$Caracteristicas,$Imagen,$Direccion,$Renta)
     {
         $Alojamiento = new Alojamiento();
-        $Alojamiento->actualizarAlojamiento($Alojamiento_id,$Nombre,$Caracteristicas,$Imagen,$Direccion);
+        $Alojamiento->actualizarAlojamiento($Alojamiento_id,$Nombre,$Caracteristicas,$Imagen,$Direccion,$Renta);
     }
 
     function actualizarAlojamientoEstado($Alojamiento_id, $UsuarioArrendador_id)
@@ -134,7 +138,7 @@ if (isset($_POST['funcion'])) {
                     $binariosImagen = fread($imagenSubida, $tamanoArchivo);
                     $id = $_SESSION['Usuario_id'];
                     $var = new AlojamientoAPI();
-                    $var->insertarAlojamiento($id, $_POST['Nombre'], $_POST['Caracteristicas'],$binariosImagen, $_POST['Direccion']);
+                    $var->insertarAlojamiento($id, $_POST['Nombre'], $_POST['Caracteristicas'],$binariosImagen, $_POST['Direccion'],$_POST['Renta']);
                 }
                 else{
                     echo 'Imagen No Cargada';
@@ -164,7 +168,7 @@ if (isset($_POST['funcion'])) {
                 }
                 $id = $_SESSION['Usuario_id'];
                 $var = new AlojamientoAPI();
-                $var->actualizarAlojamiento($_POST['Alojamiento_id'], $_POST['Nombre'], $_POST['Caracteristicas'],$binariosImagen,$_POST['Direccion']);
+                $var->actualizarAlojamiento($_POST['Alojamiento_id'], $_POST['Nombre'], $_POST['Caracteristicas'],$binariosImagen,$_POST['Direccion'],$_POST['Renta']);
             }
             else
             {

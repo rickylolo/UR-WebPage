@@ -19,7 +19,8 @@ class Alojamiento extends DB
             NULL,  # Nombre
             NULL,  # Caracteristicas
             NULL,  # Imagen Alojamiento
-            NULL  # Direccion
+            NULL,  # Direccion
+            NULL  # Renta
         ); ";
         $query = $this->connect()->query($get);
         return $query;
@@ -37,7 +38,8 @@ class Alojamiento extends DB
             NULL,  # Nombre
             NULL,  # Caracteristicas
             NULL,  # Imagen Alojamiento
-            NULL  # Direccion
+            NULL,  # Direccion
+            NULL  # Renta
         ); ";
         $query = $this->connect()->query($get);
         return $query;
@@ -55,7 +57,8 @@ class Alojamiento extends DB
             NULL,  # Nombre
             NULL,  # Caracteristicas
             NULL,  # Imagen Alojamiento
-            NULL  # Direccion
+            NULL,  # Direccion
+            NULL  # Renta
         ); ";
         $query = $this->connect()->query($get);
         return $query;
@@ -64,7 +67,7 @@ class Alojamiento extends DB
     // ---------------------------------------INSERTAR INFORMACION------------------------------------------
     // QUERY Insertar Alojamiento
 
-    function insertarAlojamiento($UsuarioVendedor_id, $Nombre,$Caracteristicas, $Imagen, $Direccion)
+    function insertarAlojamiento($UsuarioVendedor_id, $Nombre,$Caracteristicas, $Imagen, $Direccion,$Renta)
     {
         $Imagen = mysqli_escape_string($this->myCon(), $Imagen); //IMAGEN
         $insert = "CALL sp_GestionAlojamiento(
@@ -75,7 +78,8 @@ class Alojamiento extends DB
             '$Nombre',  # Nombre
             '$Caracteristicas',  # Caracteristicas
             '$Imagen',  # Imagen Alojamiento
-            '$Direccion'  # Direccion
+            '$Direccion',  # Direccion
+             $Renta  # Renta
         ); ";
         $query = $this->connect()->query($insert);
         return $query;
@@ -84,7 +88,7 @@ class Alojamiento extends DB
     // ---------------------------------------ACTUALIZAR INFORMACION------------------------------------------
     // QUERY Actualizar Alojamiento
 
-    function actualizarAlojamiento($Alojamiento_id, $Nombre,$Caracteristicas, $Imagen, $Direccion)
+    function actualizarAlojamiento($Alojamiento_id, $Nombre,$Caracteristicas, $Imagen, $Direccion,$Renta)
     {
         $Imagen = mysqli_escape_string($this->myCon(), $Imagen); //IMAGEN
         $update = "CALL sp_GestionAlojamiento(
@@ -95,7 +99,8 @@ class Alojamiento extends DB
             '$Nombre',  # Nombre
             '$Caracteristicas',  # Caracteristicas
             '$Imagen',  # Imagen Alojamiento
-            '$Direccion'  # Direccion
+            '$Direccion',  # Direccion
+            $Renta  # Renta
         );";
         $query = $this->connect()->query($update);
         return $query;
@@ -113,7 +118,8 @@ class Alojamiento extends DB
             NULL,  # Nombre
             NULL,  # Caracteristicas
             NULL,  # Imagen Alojamiento
-            NULL  # Direccion
+            NULL,  # Direccion
+            NULL  # Renta
 
         );";
         $query = $this->connect()->query($update);
@@ -134,7 +140,8 @@ class Alojamiento extends DB
             NULL,  # Nombre
             NULL,  # Caracteristicas
             NULL,  # Imagen Alojamiento
-            NULL  # Direccion
+            NULL,  # Direccion
+            NULL  # Renta
         );";
         $query = $this->connect()->query($delete);
         return $query;

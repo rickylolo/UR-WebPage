@@ -411,6 +411,12 @@
 						<div class="form-outline">
 							<input type="text" id="registroDireccionAlojamiento" class="form-control" />
 						</div>
+
+					    <div class="fs-6 text-center fw-bold pb-4">Costo Renta Mensual:</div>
+
+						<div class="form-outline">
+							<input type="text" id="registroRentaAlojamiento" class="form-control" />
+						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-success" id="BtnRegistroAlojamiento"
@@ -463,6 +469,12 @@
 						<div class="form-outline">
 							<input type="file" id="editarImagenAlojamiento" class="form-control"
 								aria-label="imagen" />
+						</div>
+
+						    <div class="fs-6 text-center fw-bold pb-4">Costo Renta Mensual:</div>
+
+						<div class="form-outline">
+							<input type="text" id="editarRentaAlojamiento" class="form-control" />
 						</div>
 					</div>
 					<div class="modal-footer">

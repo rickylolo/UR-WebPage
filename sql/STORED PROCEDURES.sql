@@ -72,6 +72,11 @@ BEGIN
         FROM vUsuario
         WHERE Usuario_id = sp_Usuario_id;
    END IF;
+	IF Operacion = 'P' THEN /*GET DATOS USUARIO PROPIETARIO*/
+		SELECT Usuario_id, nombres, apellidos, ocupacion, edad, fotoPerfil, correo, username, descripcion, direccion,noTelefono
+        FROM vUsuario
+        WHERE Usuario_id = sp_Usuario_id;
+   END IF;
 END //
 
 
@@ -87,20 +92,23 @@ CREATE PROCEDURE sp_GestionAlojamiento
     sp_nombre		 			TINYTEXT,			
 	sp_caracteristicas 			TEXT,
 	sp_imagenAlojamiento		MEDIUMBLOB,
-    sp_direccion 				TEXT
+    sp_direccion 				TEXT,
+    sp_renta 					DECIMAL(9,2)
 )		
 
 
 BEGIN
+   DECLARE u_costoRenta DECIMAL(9,2);
    IF Operacion = 'I' /*INSERT ALOJAMIENTO*/
    THEN  
-		INSERT INTO Alojamiento(UsuarioVendedor_id,nombre,caracteristicas,imagenAlojamiento,direccion) 
-			VALUES (sp_UsuarioVendedor_id,sp_nombre,sp_caracteristicas,sp_imagenAlojamiento,sp_direccion);
+		INSERT INTO Alojamiento(UsuarioVendedor_id,nombre,caracteristicas,imagenAlojamiento,direccion,renta) 
+			VALUES (sp_UsuarioVendedor_id,sp_nombre,sp_caracteristicas,sp_imagenAlojamiento,sp_direccion,sp_renta);
    END IF;
    
    IF Operacion = 'E'  /*EDIT ALOJAMIENTO*/
     
     THEN 
+    	SET u_costoRenta = CONVERT(sp_renta,DECIMAL(9,2));
     	SET sp_nombre=IF(sp_nombre='',NULL,sp_nombre),
 			sp_caracteristicas=IF(sp_caracteristicas='',NULL,sp_caracteristicas),
 			sp_imagenAlojamiento=IF(sp_imagenAlojamiento='',NULL,sp_imagenAlojamiento),
@@ -109,7 +117,8 @@ BEGIN
 			SET nombre = IFNULL(sp_nombre,nombre), 
 				caracteristicas= IFNULL(sp_caracteristicas,caracteristicas), 
 				imagenAlojamiento=  IFNULL(sp_imagenAlojamiento,imagenAlojamiento), 
-				direccion= IFNULL(sp_direccion,direccion)
+				direccion= IFNULL(sp_direccion,direccion),
+                renta = IFNULL(u_costoRenta,renta)
 		WHERE Alojamiento_id=sp_Alojamiento_id;
         
    END IF;
@@ -122,17 +131,17 @@ BEGIN
    END IF;
    
    IF Operacion = 'A' THEN /*GET ALL ALOJAMIENTOS DISPONIBLES*/
-          SELECT Alojamiento_id, UsuarioVendedor_id, UsuarioArrendador_id, nombre,nombreCompleto, caracteristicas, imagenAlojamiento, direccion, isOcupado
+          SELECT Alojamiento_id, UsuarioVendedor_id, UsuarioArrendador_id,renta, nombre,nombreCompleto, caracteristicas, imagenAlojamiento, direccion, isOcupado
           FROM vAlojamiento
           WHERE isOcupado = 0;
    END IF;
       IF Operacion = 'C' THEN /*GET ALL ALOJAMIENTOS USUARIO*/
-          SELECT Alojamiento_id, nombre, caracteristicas, nombreCompleto, imagenAlojamiento, direccion, isOcupado
+          SELECT Alojamiento_id, nombre, caracteristicas, nombreCompleto,renta, imagenAlojamiento, direccion, isOcupado
           FROM vAlojamiento
           WHERE UsuarioArrendador_id = sp_UsuarioArrendador_id;
    END IF;
 	     IF Operacion = 'G' THEN /*GET ALOJAMIENTOS DATA*/
-          SELECT Alojamiento_id, nombre, caracteristicas, nombreCompleto, imagenAlojamiento, direccion, isOcupado
+          SELECT Alojamiento_id, nombre, caracteristicas, nombreCompleto,renta, imagenAlojamiento, direccion, isOcupado
           FROM vAlojamiento
           WHERE Alojamiento_id = sp_Alojamiento_id;
    END IF;

@@ -66,6 +66,39 @@ class usuarioAPI
         }
     }
 
+    function getUserDataPropietario($Usuario_id)
+    {
+        
+        $user = new User();
+        $arrUsers = array();
+        $arrUsers["Datos"] = array();
+
+        $res = $user->getUserDataPropietario($Usuario_id);
+        if ($res) { // Entra si hay información
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
+
+                $obj = array( 
+                    "Usuario_id" => $row['Usuario_id'],
+                    "nombres" => $row['nombres'],
+                    "apellidos" => $row['apellidos'],
+                    "ocupacion" => $row['ocupacion'],
+                    "edad" => $row['edad'],
+                    "fotoPerfil" => base64_encode(($row['fotoPerfil'])),
+                    "correo" => $row['correo'],
+                    "username" => $row['username'],
+                    "descripcion" => $row['descripcion'],
+                    "direccion" => $row['direccion'],
+                    "noTelefono" => $row['noTelefono']
+                );
+                array_push($arrUsers["Datos"], $obj);
+            }
+            echo json_encode($arrUsers["Datos"]);
+        } else {
+            header("Location:../index.php");
+            exit();
+        }
+    }
+
     function insertarUser($Nombres,$Apellidos,$Ocupacion,$Edad,$FotoPerfil,$Correo,$Username,$Contraseña,$Descripcion,$Direccion,$NoTelefono)
      {
         $user = new User();
@@ -128,7 +161,6 @@ if (isset($_POST['funcion'])) {
               $var->actualizarUser($id,$_POST['Nombres'], $_POST['Apellidos'], $_POST['Ocupacion'],$_POST['Edad'], $binariosImagen,  $_POST['Correo'], $_POST['Username'], $_POST['Contraseña'], $_POST['Descripcion'],$_POST['Direccion'],$_POST['noTelefono']);
             break;
         case "obtenerDataUsuario":
-
             session_start();
             if (!empty($_SESSION)) {
                 $id = $_SESSION['Usuario_id'];
@@ -139,6 +171,10 @@ if (isset($_POST['funcion'])) {
                 echo '0';
             }
             break;
+        case "obtenerDataPropietario":
+           $var = new usuarioAPI();
+           $var->getUserDataPropietario($_POST['Usuario_id']);
+           break;
     }
 }
 

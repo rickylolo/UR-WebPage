@@ -52,6 +52,29 @@ class User extends DB
         return $query;
     }
 
+        // QUERY Get Datos Usuario Propietario
+
+    function getUserDataPropietario($Usuario_id)
+    {
+        $get = "CALL sp_GestionUsuario(
+            'P', #Operacion
+            $Usuario_id, #Id Usuario
+            NULL, # Nombres
+            NULL, # Apellidos
+            NULL, # Ocupacion
+            NULL, # Edad
+            NULL, # Foto Perfil
+            NULL, # Correo
+            NULL, # Nombre de usuario
+            NULL, # Contraseña
+            NULL, # Descripcion
+            NULL, # Direccion   
+            NULL  # noTelefono   
+        ); ";
+        $query = $this->connect()->query($get);
+        return $query;
+    }
+
 
     // ---------------------------------------INSERTAR INFORMACION------------------------------------------
     // QUERY Insertar Usuario

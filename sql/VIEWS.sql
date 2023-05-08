@@ -33,7 +33,7 @@ ORDER BY A.tiempoRegistro DESC;
 DROP VIEW IF EXISTS vAlojamiento;
 
 CREATE VIEW vAlojamiento AS
-SELECT Alojamiento_id, UsuarioVendedor_id, UsuarioArrendador_id, nombre, caracteristicas,CONCAT(nombres,' ',apellidos) nombreCompleto, imagenAlojamiento, A.direccion, isOcupado
+SELECT Alojamiento_id, UsuarioVendedor_id, UsuarioArrendador_id,renta, nombre, caracteristicas,CONCAT(nombres,' ',apellidos) nombreCompleto, imagenAlojamiento, A.direccion, isOcupado
 FROM Alojamiento A
 LEFT JOIN Usuario B
 ON A.UsuarioVendedor_id = B.Usuario_id;

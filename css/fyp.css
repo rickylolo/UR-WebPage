@@ -161,6 +161,26 @@ body {
   margin: auto;
 }
 
+.deslizador {
+  display: flex;
+  overflow: hidden;
+  width: 28rem;
+  height: 330px;
+  position: relative;
+}
+
+.deslizador-interno {
+  display: flex;
+  position: absolute;
+  transition: transform 2s;
+}
+
+.deslizador-interno img {
+  width: 28rem;
+  height: 330px;
+  object-fit: cover;
+}
+
 @media (max-width: 920px) {
   .content {
     grid-template-columns: repeat(2, 1fr);
