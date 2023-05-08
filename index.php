@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
-	<title>UR | Inicio</title>
 
-	<link href="css/bootstrap.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="./css/estilo.css" />
-	<link rel="icon" href="./imagenes/logo.png" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>UR | Inicio</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./css/estilo.css">
+	<link rel="icon" href="./imagenes/logo.png">
 	<script src="js/jquery-3.6.0.js"></script>
 	<script src="js/index.js"></script>
 </head>
@@ -19,7 +22,7 @@
 					<div class="row g-0 d-flex align-items-center">
 						<div class="col-lg-4 d-none d-lg-flex">
 							<img src="imagenes/house.jpg" alt="House"
-								class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+								class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5">
 						</div>
 						<div class="col-lg-6">
 							<div class="d-flex flex-column">
@@ -32,21 +35,20 @@
 							</div>
 							<div class="card-body px-md-5">
 								<form>
-									<!-- User input -->
 									<div class="container">
 										<div class="mx-auto form-outline mb-4 w-75">
-											<input type="text" id="usuario" class="form-control" />
+											<input type="text" id="loginUsuario" class="form-control" />
 											<label class="form-label" for="form2Example1">Nombre de usuario</label>
 										</div>
 
-										<!-- Password input -->
+
 										<div class="mx-auto form-outline mb-4 w-75">
-											<input type="password" id="form2Example2" class="form-control" />
+											<input type="password" id="loginPassword" class="form-control" />
 											<label class="form-label" for="form2Example2">Contraseña</label>
 										</div>
 									</div>
 
-									<!-- Submit button -->
+
 									<div class="d-flex justify-content-center">
 										<button type="button" id="BtnLogin" class="btn btn-orange btn-block mb-4">
 											Ingresar
@@ -84,14 +86,14 @@
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-outline">
-													<input type="text" id="form3Example1" class="form-control" />
-													<label class="form-label" for="form3Example1">Nombre(s)</label>
+													<input type="text" id="registroNombres" class="form-control" />
+													<label class="form-label" for="registroNombres">Nombre(s)</label>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-outline">
-													<input type="text" id="form3Example2" class="form-control" />
-													<label class="form-label" for="form3Example2">Apellido(s)</label>
+													<input type="text" id="registroApellidos" class="form-control" />
+													<label class="form-label" for="registroApellidos">Apellido(s)</label>
 												</div>
 											</div>
 										</div>
@@ -99,54 +101,59 @@
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-outline">
-													<input type="text" id="form3Example1" class="form-control" />
-													<label class="form-label" for="form3Example1">Ocupación</label>
+													<input type="text" id="registroOcupacion" class="form-control" />
+													<label class="form-label" for="registroOcupacion">Ocupación</label>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-outline">
-													<input type="number" id="form3Example2" class="form-control" />
-													<label class="form-label" for="form3Example2">Edad</label>
+													<input type="number" id="registroEdad" class="form-control" />
+													<label class="form-label" for="registroEdad">Edad</label>
 												</div>
 											</div>
 										</div>
 
 										<div class="form-outline">
-											<input type="file" id="form3Example3" class="form-control" />
-											<label class="form-label" for="form3Example3">Avatar</label>
+											<input type="file" id="registroFotoPerfil" class="form-control" />
+											<label class="form-label" for="registroFotoPerfil">Avatar</label>
 										</div>
 
 										<div class="form-outline">
-											<input type="email" id="form3Example3" class="form-control" />
-											<label class="form-label" for="form3Example3">Correo</label>
+											<input type="email" id="registroCorreo" class="form-control" />
+											<label class="form-label" for="registroCorreo">Correo</label>
 										</div>
 
 										<div class="form-outline">
-											<input type="text" id="form3Example3" class="form-control" />
-											<label class="form-label" for="form3Example3">Nombre de usuario</label>
+											<input type="text" id="registroNombreUsuario" class="form-control" />
+											<label class="form-label" for="registroNombreUsuario">Nombre de usuario</label>
 										</div>
 
 										<div class="form-outline">
-											<input type="password" id="form3Example4" class="form-control" />
-											<label class="form-label" for="form3Example4">Contraseña</label>
+											<input type="password" id="registroPassword" class="form-control" />
+											<label class="form-label" for="registroPassword">Contraseña</label>
 										</div>
 
 										<div class="form-outline">
-											<input type="password" id="form3Example6" class="form-control" />
-											<label class="form-label" for="form3Example6">Confirmar contraseña</label>
+											<input type="password" id="registroConfirmarPassword" class="form-control" />
+											<label class="form-label" for="registroConfirmarPassword">Confirmar contraseña</label>
 										</div>
 
 										<div class="form-outline">
-											<textarea class="form-control" aria-label="descripcion"></textarea>
-											<label class="form-label" for="form3Example4">Descripción</label>
+											<textarea class="form-control" id="registroDescripcion" aria-label="descripcion"></textarea>
+											<label class="form-label" for="registroDescripcion">Descripción</label>
 										</div>
 
 										<div class="form-outline">
-											<input type="text" id="form3Example5" class="form-control" />
-											<label class="form-label" for="form3Example5">Dirección</label>
+											<input type="text" id="registroDireccion" class="form-control" />
+											<label class="form-label" for="registroDireccion">Dirección</label>
 										</div>
 
-										<button type="submit" class="btn btn-success btn-block mt-4 mb-4">
+										<div class="form-outline">
+											<input type="number" id="registroTelefono" class="form-control" />
+											<label class="form-label" for="registroTelefono">Telefono</label>
+										</div>
+
+										<button type="button" id="BtnRegistro" class="btn btn-success btn-block mt-4 mb-4">
 											Registrar
 										</button>
 										<button type="button" id="irLogin"

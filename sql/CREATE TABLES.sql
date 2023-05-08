@@ -16,6 +16,7 @@ CREATE TABLE Usuario(
 	userPassword 		VARCHAR(30) NOT NULL,
 	descripcion 		TEXT,
 	direccion 			TEXT,
+    noTelefono			VARCHAR(12) NOT NULL,
  CONSTRAINT PK_Usuario
 	PRIMARY KEY (Usuario_id)
 );
@@ -75,3 +76,22 @@ CREATE TABLE Mensaje(
 	FOREIGN KEY (Chat_id) REFERENCES Chat(Chat_id)
 );
 
+-- 												TABLA DE MULTIMEDIA--
+DROP TABLE IF EXISTS Multimedia;
+CREATE TABLE Multimedia(
+	Multimedia_id 		INT AUTO_INCREMENT NOT NULL,
+    Alojamiento_id 			INT NOT NULL,		
+    multimedia  		MEDIUMBLOB,
+ CONSTRAINT PK_Multimedia
+	PRIMARY KEY (Multimedia_id),
+ CONSTRAINT FK_Multimedia_Alojamiento
+	FOREIGN KEY (Alojamiento_id) REFERENCES Alojamiento(Alojamiento_id)
+);
+
+
+
+DROP TABLE IF EXISTS Mensaje;
+DROP TABLE IF EXISTS Chat;
+DROP TABLE IF EXISTS Multimedia;
+DROP TABLE IF EXISTS Alojamiento;
+DROP TABLE IF EXISTS Usuario;

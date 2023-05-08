@@ -1,5 +1,11 @@
+<?php
+include_once 'php\Usuario.php';
+session_start(); // Inicio mi sesion PHP
+
+?>
+
 <!DOCTYPE html>
-<html lang="ES">
+<html lang="es">
 
 <head>
 	<meta charset="UTF-8" />
@@ -7,6 +13,7 @@
 	<link rel="icon" href="./imagenes/logo.png" />
 	<script src="js/jquery-3.6.0.js"></script>
 	<script src="js/fyp.js"></script>
+	<script src="js/main.js"></script>
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -17,56 +24,51 @@
 <body>
 	<nav class="navbar sticky-top navbar-expand-lg navbar-light">
 		<div class="container">
-			<img src="imagenes/logo.png " width="100px" />
-			<a class="navbar-brand fs-4 fw-bold p-4" href="fyp.html">UNI-Rest</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+			<div>
+				<img src="imagenes/logo.png " width="100px" />
+				<a class="navbar-brand fs-3 p-4 text-white" href="fyp.php">UNI-Rest</a>
+			</div>
+			<div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				</ul>
 				<div id="perfil">
 					<div class="d-flex flex-column dropstart misDatosUsuario">
-						<div class="dropdown p-2 mx-auto" id="NavPerfil" data-bs-toggle="dropdown"
+						<div class="miImagen dropdown p-2 mx-auto" id="DatosUser" data-bs-toggle="dropdown"
 							aria-expanded="false">
-							<img src="imagenes/imagen-dario.png" class="rounded-circle" />
+							<img src="" id="pfp" class="pfp rounded-circle">
 						</div>
-						<ul class="dropdown-menu" aria-labelledby="DatosUser">
-							<li class="misDatosUser">
+						<ul class="dropdown-menu p-3" aria-labelledby="DatosUser">
+							<li>
 								<div class="d-flex flex-row miImagen">
-									<div class="p-2">
-										<img src="imagenes/imagen-dario.png" class="rounded-circle" />
+									<div class="p-1">
+										<img src="" id="pfp2" class="pfp rounded-circle">
+
 									</div>
-									<div class="p-2">
-										<div class="d-flex flex-column">
-											<p class="fs-5 p-1 fw-bold">Dario</p>
-										</div>
-									</div>
+									<p class="fw-bold fs-5 pt-2" id="userNav">
+									</p>
 								</div>
 							</li>
-
 							<div class="dropdown-divider"></div>
 							<li>
 								<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#miModalPerfil">
-									Perfil</a>
+									<i class="bi bi-person-circle"></i> Perfil</a>
 							</li>
 							<li>
 								<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#miModalMensaje">
-									Mensajes</a>
+									<i class="bi bi-chat-square-text"></i> Mensajes</a>
 							</li>
 
 							<li>
-								<a class="dropdown-item" href="alojamiento.html">
-									Alojamiento</a>
+								<a class="dropdown-item" href="alojamiento.php">
+									<i class="bi bi-house-door-fill"></i> Alojamiento</a>
 							</li>
 							<div class="dropdown-divider"></div>
 							<li>
-								<a class="dropdown-item" href="index.html">Cerrar Sesión</a>
+								<a class="dropdown-item" href="index.php?logout=true"><i class="bi bi-box-arrow-left"></i> Cerrar Sesión</a>
 							</li>
-						</ul>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</nav>
@@ -90,7 +92,7 @@
 			<div class="content">
 				<article class="post">
 					<div class="post-header">
-						<a href="detalle.html">
+						<a href="detalle.php">
 							<img src="imagenes/img1.jpg" class="post-img" />
 						</a>
 					</div>
@@ -105,7 +107,7 @@
 
 				<article class="post">
 					<div class="post-header">
-						<a href="detalle.html">
+						<a href="detalle.php">
 							<img src="imagenes/img2.jpg" class="post-img" />
 						</a>
 					</div>
@@ -120,7 +122,7 @@
 
 				<article class="post">
 					<div class="post-header">
-						<a href="detalle.html">
+						<a href="detalle.php">
 							<img src="imagenes/img3.jpg" class="post-img" />
 						</a>
 					</div>
@@ -135,7 +137,7 @@
 
 				<article class="post">
 					<div class="post-header">
-						<a href="producto.html">
+						<a href="producto.php">
 							<img src="imagenes/img4.jpg" class="post-img" />
 						</a>
 					</div>
@@ -150,7 +152,7 @@
 
 				<article class="post">
 					<div class="post-header">
-						<a href="detalle.html">
+						<a href="detalle.php">
 							<img src="imagenes/img5.jpg" class="post-img" />
 						</a>
 					</div>
@@ -165,7 +167,7 @@
 
 				<article class="post">
 					<div class="post-header">
-						<a href="detalle.html">
+						<a href="detalle.php">
 							<img src="imagenes/img6.jpg" class="post-img" />
 						</a>
 					</div>
@@ -309,66 +311,131 @@
 	<!--  >MODAL WINDOW PERFIL<-->
 	<div class="modal fade" id="miModalPerfil" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle"
 		data-bs-backdrop="static">
-		<div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" id="modalTitle">Perfil</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<div class="container">
-						<div class="d-flex flex-row pfpPerfil">
-							<div class="p-1">
-								<img src="imagenes/imagen-dario.png" class="rounded-circle" />
-							</div>
-							<div class="p-3">
-								<div class="d-flex flex-column">
-									<div class="d-flex justify-content-between">
-										<p class="fs-4 p-1 fw-bold">Dario</p>
-										<div>
-											<button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-												Editar
-											</button>
-										</div>
-									</div>
-									<div class="d-flex justify-content-between">
-										<p class="text-muted fw-bold fs-6 p-1">
-											Joshua Dario de la Cruz Guerra
-										</p>
-										<p class="text-muted fs-6 p-1"><b>Edad:</b> 21</p>
-										<p class="text-muted fs-6 p-1">
-											<b>Ocupación:</b> Estudiante
-										</p>
-									</div>
 
-									<p class="text-muted fs-6 p-1">
-										<b>Correo:</b> Dario123@gmail.com
-									</p>
-									<p class="text-muted fs-6 p-1">
-										<b>Teléfono:</b> 818277742
-									</p>
+					<div class="d-flex flex-row justify-content-center ps-4 pfpPerfil">
+						<div class="p-1">
+							<img src="imagenes/imagen-dario.png" id="miImagenPerfil" class="rounded-circle" />
+						</div>
+						<div class="p-3" id="misDatosPerfil">
 
-									<hr class="solid" />
-									<p class="fs-5 p-1">Mi descripción</p>
-									<p class="fs-6 p-2" id="descripcion">
-										Como estudiante en búsqueda de una casa en renta, busco
-										una ubicación cerca de mi universidad y con un precio
-										razonable. La seguridad y comodidad son esenciales, con
-										una casa equipada con las comodidades básicas para
-										centrarme en mis estudios. Busco un ambiente tranquilo y
-										seguro con acceso a tiendas y supermercados. En resumen,
-										busco una casa en renta asequible, cómoda y segura que
-										esté convenientemente ubicada cerca de mi universidad y
-										que cumpla con mis necesidades de estudio.
-									</p>
-								</div>
-							</div>
 						</div>
 					</div>
+
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
 						Regresar
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--  >MODAL WINDOW EDITAR PERFIL<-->
+	<div class="modal fade" id="miModalEditarPerfil" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle"
+		data-bs-backdrop="static">
+		<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modalTitle">Perfil</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body p-4">
+					<form>
+
+						<div class="image-upload d-flex justify-content-center pt-4 pb-4">
+							<label for="editarAvatar">
+								<img src="" alt="" id="E_imgFoto" width="250px" height="250px">
+							</label>
+							<input type="file" onchange="vista_preliminarEdit(event)" accept="image/jpeg"
+								class="form-control" id="editarAvatar" name="editarAvatar" placeholder="Foto de perfil"
+								aria-label="Username" aria-describedby="basic-addon1">
+
+
+						</div>
+						<div class="row pb-2">
+							<div class="col-md-6">
+								<div class="form-outline">
+									<input type="text" id="editarNombres" class="form-control" />
+									<label class="form-label" for="editarNombres">Nombre(s)</label>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-outline">
+									<input type="text" id="editarApellidos" class="form-control" />
+									<label class="form-label" for="editarApellidos">Apellido(s)</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="row pb-2">
+							<div class="col-md-6">
+								<div class="form-outline">
+									<input type="text" id="editarOcupacion" class="form-control" />
+									<label class="form-label" for="editarOcupacion">Ocupación</label>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-outline">
+									<input type="number" id="editarEdad" class="form-control" />
+									<label class="form-label" for="editarEdad">Edad</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-outline pb-2">
+							<input type="email" id="editarCorreo" class="form-control" />
+							<label class="form-label" for="editarCorreo">Correo</label>
+						</div>
+
+						<div class="form-outline pb-2">
+							<input type="text" id="editarNombreUsuario" class="form-control" />
+							<label class="form-label" for="editarNombreUsuario">Nombre de usuario</label>
+						</div>
+
+						<div class="form-outline pb-2">
+							<input type="password" id="editarPassword" class="form-control" />
+							<label class="form-label" for="editarPassword">Contraseña</label>
+						</div>
+
+						<div class="form-outline pb-2">
+							<input type="password" id="editarConfirmarPassword" class="form-control" />
+							<label class="form-label" for="editarConfirmarPassword">Confirmar contraseña</label>
+						</div>
+
+						<div class="form-outline pb-2">
+							<textarea class="form-control" id="editarDescripcion" aria-label="descripcion"></textarea>
+							<label class="form-label" for="editarDescripcion">Descripción</label>
+						</div>
+
+						<div class="form-outline pb-2">
+							<input type="text" id="editarDireccion" class="form-control" />
+							<label class="form-label" for="editarDireccion">Dirección</label>
+						</div>
+
+						<div class="form-outline pb-2">
+							<input type="number" id="editarTelefono" class="form-control" />
+							<label class="form-label" for="editarTelefono">Telefono</label>
+						</div>
+
+
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="BtnEditarPerfil" class="btn btn-primary btn-block mt-4 mb-4">
+						Actualizar
+					</button>
+					<button type="button" data-bs-dismiss="modal" class="btn btn-secondary btn-block mt-4 mb-4">
+						Cancelar
 					</button>
 				</div>
 			</div>

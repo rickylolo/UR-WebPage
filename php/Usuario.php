@@ -7,14 +7,14 @@ include_once 'UsuarioQuery.php';
 
 class usuarioAPI
 {
-    function seleccionLoggeo($email, $password)
+    function seleccionLoggeo($username, $password)
     {
 
         $user = new User();
         $arrUsers = array();
         $arrUsers["Datos"] = array();
 
-        $res = $user->IniciarSesion($email, $password);
+        $res = $user->IniciarSesion($username, $password);
 
         if ($res) { // Entra si hay información
             session_start();
@@ -54,7 +54,8 @@ class usuarioAPI
                     "correo" => $row['correo'],
                     "username" => $row['username'],
                     "descripcion" => $row['descripcion'],
-                    "direccion" => $row['direccion']
+                    "direccion" => $row['direccion'],
+                    "noTelefono" => $row['noTelefono']
                 );
                 array_push($arrUsers["Datos"], $obj);
             }
@@ -65,16 +66,16 @@ class usuarioAPI
         }
     }
 
-    function insertarUser($Nombres,$Apellidos,$Ocupacion,$Edad,$FotoPerfil,$Correo,$Username,$Contraseña,$Descripcion,$Direccion)
+    function insertarUser($Nombres,$Apellidos,$Ocupacion,$Edad,$FotoPerfil,$Correo,$Username,$Contraseña,$Descripcion,$Direccion,$NoTelefono)
      {
         $user = new User();
-        $user->insertarUsuario($Nombres,$Apellidos,$Ocupacion,$Edad,$FotoPerfil,$Correo,$Username,$Contraseña,$Descripcion,$Direccion);
+        $user->insertarUsuario($Nombres,$Apellidos,$Ocupacion,$Edad,$FotoPerfil,$Correo,$Username,$Contraseña,$Descripcion,$Direccion,$NoTelefono);
     }
 
-    function actualizarUser($Usuario_id,$Nombres,$Apellidos,$Ocupacion,$Edad,$FotoPerfil,$Correo,$Username,$Contraseña,$Descripcion,$Direccion)
+    function actualizarUser($Usuario_id,$Nombres,$Apellidos,$Ocupacion,$Edad,$FotoPerfil,$Correo,$Username,$Contraseña,$Descripcion,$Direccion,$NoTelefono)
     {
         $user = new User();
-        $user->actualizarUser($Usuario_id,$Nombres,$Apellidos,$Ocupacion,$Edad,$FotoPerfil,$Correo,$Username,$Contraseña,$Descripcion,$Direccion);
+        $user->actualizarUser($Usuario_id,$Nombres,$Apellidos,$Ocupacion,$Edad,$FotoPerfil,$Correo,$Username,$Contraseña,$Descripcion,$Direccion,$NoTelefono);
     }
 
 
@@ -105,7 +106,7 @@ if (isset($_POST['funcion'])) {
                 $imagenSubida = fopen($_FILES['file']['tmp_name'], 'r');
                 $binariosImagen = fread($imagenSubida, $tamanoArchivo);
                 $var = new usuarioAPI();
-                $var->insertarUser($_POST['Nombres'], $_POST['Apellidos'], $_POST['Ocupacion'],$_POST['Edad'], $binariosImagen,  $_POST['Correo'], $_POST['Username'], $_POST['Contraseña'], $_POST['Descripcion'],$_POST['Direccion']);
+                $var->insertarUser($_POST['Nombres'], $_POST['Apellidos'], $_POST['Ocupacion'],$_POST['Edad'], $binariosImagen,  $_POST['Correo'], $_POST['Username'], $_POST['Contraseña'], $_POST['Descripcion'],$_POST['Direccion'],$_POST['noTelefono']);
             }
             else{
                 echo 'Imagen No Cargada';
@@ -123,9 +124,8 @@ if (isset($_POST['funcion'])) {
             }
             session_start();
             $id = $_SESSION['Usuario_id'];
-            $rol = $_SESSION['rolUsuario'];
             $var = new usuarioAPI();
-              $var->actualizarUser($id,$_POST['Nombres'], $_POST['Apellidos'], $_POST['Ocupacion'],$_POST['Edad'], $binariosImagen,  $_POST['Correo'], $_POST['Username'], $_POST['Contraseña'], $_POST['Descripcion'],$_POST['Direccion']);
+              $var->actualizarUser($id,$_POST['Nombres'], $_POST['Apellidos'], $_POST['Ocupacion'],$_POST['Edad'], $binariosImagen,  $_POST['Correo'], $_POST['Username'], $_POST['Contraseña'], $_POST['Descripcion'],$_POST['Direccion'],$_POST['noTelefono']);
             break;
         case "obtenerDataUsuario":
 

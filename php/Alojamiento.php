@@ -25,7 +25,8 @@ class AlojamientoAPI
                     "caracteristicas" => $row['caracteristicas'],
                     "imagenAlojamiento" => base64_encode(($row['imagenAlojamiento'])),
                     "direccion" => $row['direccion'],
-                    "isOcupado" => $row['isOcupado']
+                    "isOcupado" => $row['isOcupado'],
+                    "nombreCompleto" => $row['nombreCompleto']
                 );
                 array_push($arrAlojamientos["Datos"], $obj);
             }
@@ -52,7 +53,8 @@ class AlojamientoAPI
                     "caracteristicas" => $row['caracteristicas'],
                     "imagenAlojamiento" => base64_encode(($row['imagenAlojamiento'])),
                     "direccion" => $row['direccion'],
-                    "isOcupado" => $row['isOcupado']
+                    "isOcupado" => $row['isOcupado'],
+                    "nombreCompleto" => $row['nombreCompleto']
                 );
                 array_push($arrAlojamientos["Datos"], $obj);
             }
@@ -63,7 +65,6 @@ class AlojamientoAPI
         }
     }
 
-    
     function getAlojamientosUsuarioData($Usuario_id)
     {
 
@@ -80,7 +81,8 @@ class AlojamientoAPI
                     "caracteristicas" => $row['caracteristicas'],
                     "imagenAlojamiento" => base64_encode(($row['imagenAlojamiento'])),
                     "direccion" => $row['direccion'],
-                    "isOcupado" => $row['isOcupado']
+                    "isOcupado" => $row['isOcupado'],
+                    "nombreCompleto" => $row['nombreCompleto']
                 );
                 array_push($arrAlojamientos["Datos"], $obj);
             }
@@ -97,7 +99,6 @@ class AlojamientoAPI
         $Alojamiento->insertarAlojamiento($UsuarioVendedor_id,$Nombre,$Caracteristicas,$Imagen,$Direccion);
     }
 
-
     function actualizarAlojamiento($Alojamiento_id,$Nombre,$Caracteristicas,$Imagen,$Direccion)
     {
         $Alojamiento = new Alojamiento();
@@ -109,6 +110,7 @@ class AlojamientoAPI
         $Alojamiento = new Alojamiento();
         $Alojamiento->actualizarAlojamientoEstado($Alojamiento_id, $UsuarioArrendador_id);
     }
+    
     function eliminarAlojamiento($Alojamiento_id)
     {
         $Alojamiento = new Alojamiento();
@@ -158,14 +160,11 @@ if (isset($_POST['funcion'])) {
                     $tamanoArchivo = $_FILES['file']['size'];
                     $imagenSubida = fopen($_FILES['file']['tmp_name'], 'r');
                     $binariosImagen = fread($imagenSubida, $tamanoArchivo);
-                    $id = $_SESSION['Usuario_id'];
-                    $var = new AlojamientoAPI();
-                    $var->actualizarAlojamiento($_POST['Alojamiento_id'], $_POST['Nombre'], $_POST['Caracteristicas'],$binariosImagen,$_POST['Direccion']);
+
                 }
-                else{
-                    echo 'Imagen No Cargada';
-                    exit();
-                }
+                $id = $_SESSION['Usuario_id'];
+                $var = new AlojamientoAPI();
+                $var->actualizarAlojamiento($_POST['Alojamiento_id'], $_POST['Nombre'], $_POST['Caracteristicas'],$binariosImagen,$_POST['Direccion']);
             }
             else
             {
@@ -194,7 +193,9 @@ if (isset($_POST['funcion'])) {
             break;
         case "obtenerDataTodosAlojamientosUsuario":
             $var = new AlojamientoAPI();
-            $var->getAlojamientosUsuarioData($_POST['Usuario_id']);
+            session_start();
+            $id = $_SESSION['Usuario_id'];
+            $var->getAlojamientosUsuarioData($id);
             break;
     }
 }

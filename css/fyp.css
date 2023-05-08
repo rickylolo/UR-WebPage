@@ -1,13 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
 body {
   font-family: Arial, sans-serif;
 }
 
+.navbar-brand {
+  font-family: 'Alfa Slab One', cursive;
+}
 .navbar {
   background: linear-gradient(
     0deg,
     rgba(255, 255, 255, 1) 0%,
     rgb(245, 156, 112) 100%
   );
+}
+
+#E_imgFoto {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.image-upload > input {
+  display: none;
 }
 
 #NavPerfil img {

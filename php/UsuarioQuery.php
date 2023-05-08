@@ -22,7 +22,8 @@ class User extends DB
             '$Username', # Nombre de usuario
             '$password', # Contraseña
             NULL, # Descripcion
-            NULL # Direccion
+            NULL, # Direccion
+            NULL  # noTelefono   
         ); ";
         $query = $this->connect()->query($get);
         return $query;
@@ -44,7 +45,8 @@ class User extends DB
             NULL, # Nombre de usuario
             NULL, # Contraseña
             NULL, # Descripcion
-            NULL  # Direccion   
+            NULL, # Direccion   
+            NULL  # noTelefono   
         ); ";
         $query = $this->connect()->query($get);
         return $query;
@@ -54,7 +56,7 @@ class User extends DB
     // ---------------------------------------INSERTAR INFORMACION------------------------------------------
     // QUERY Insertar Usuario
 
-    function insertarUsuario($Nombres, $Apellidos, $Ocupacion, $Edad, $FotoPerfil, $Correo, $Username, $Contraseña,  $Descripcion, $Direccion)
+    function insertarUsuario($Nombres, $Apellidos, $Ocupacion, $Edad, $FotoPerfil, $Correo, $Username, $Contraseña,  $Descripcion, $Direccion, $NoTelefono)
     {
         $FotoPerfil = mysqli_escape_string($this->myCon(), $FotoPerfil); //IMAGEN
         $insert = "CALL sp_GestionUsuario(
@@ -69,7 +71,8 @@ class User extends DB
             '$Username', # Nombre de usuario
             '$Contraseña', # Contraseña
             '$Descripcion', # Descripcion
-            '$Direccion'  # Direccion   
+            '$Direccion',  # Direccion   
+            '$NoTelefono'  # Direccion  
         ); ";
         $query = $this->connect()->query($insert);
         return $query;
@@ -78,7 +81,7 @@ class User extends DB
     // ---------------------------------------ACTUALIZAR INFORMACION------------------------------------------
     // QUERY Actualizar Usuario
 
-    function actualizarUser($Usuario_id, $Nombres, $Apellidos, $Ocupacion, $Edad, $FotoPerfil, $Correo, $Username, $Contraseña,  $Descripcion, $Direccion)
+    function actualizarUser($Usuario_id, $Nombres, $Apellidos, $Ocupacion, $Edad, $FotoPerfil, $Correo, $Username, $Contraseña,  $Descripcion, $Direccion,$NoTelefono)
     {
         $FotoPerfil = mysqli_escape_string($this->myCon(), $FotoPerfil); //IMAGEN
         $update = "CALL sp_GestionUsuario(
@@ -93,7 +96,8 @@ class User extends DB
             '$Username', # Nombre de usuario
             '$Contraseña', # Contraseña
             '$Descripcion', # Descripcion
-            '$Direccion'  # Direccion   
+            '$Direccion',  # Direccion   
+            '$NoTelefono'  # Direccion  
         );";
         $query = $this->connect()->query($update);
         return $query;

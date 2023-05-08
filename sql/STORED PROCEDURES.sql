@@ -17,15 +17,16 @@ CREATE PROCEDURE sp_GestionUsuario
 	sp_username 		VARCHAR(40),
 	sp_userPassword 	VARCHAR(30),
 	sp_descripcion 		TEXT,
-	sp_direccion 		TEXT
+	sp_direccion 		TEXT,
+    sp_noTelefono		VARCHAR(12)
 )
 
 BEGIN
 	DECLARE sp_ultimoCambio DATETIME; 
    IF Operacion = 'I' /*INSERT USUARIO*/
    THEN  
-		INSERT INTO Usuario(nombres,apellidos,ocupacion,edad,fotoPerfil ,correo,username,userPassword,descripcion,direccion) 
-			VALUES (sp_nombres,sp_apellidos,sp_ocupacion,sp_edad,sp_fotoPerfil ,sp_correo,sp_username,sp_userPassword,sp_descripcion,sp_direccion);
+		INSERT INTO Usuario(nombres,apellidos,ocupacion,edad,fotoPerfil ,correo,username,userPassword,descripcion,direccion,noTelefono) 
+			VALUES (sp_nombres,sp_apellidos,sp_ocupacion,sp_edad,sp_fotoPerfil ,sp_correo,sp_username,sp_userPassword,sp_descripcion,sp_direccion,sp_noTelefono);
    END IF;
 	IF Operacion = 'E'  /*EDIT USUARIO*/
     
@@ -39,18 +40,20 @@ BEGIN
             sp_username=IF(sp_username='',NULL,sp_username),
 			sp_userPassword=IF(sp_userPassword='',NULL,sp_userPassword),
             sp_descripcion=IF(sp_descripcion='',NULL,sp_descripcion),
-            sp_direccion=IF(sp_direccion='',NULL,sp_direccion);
+            sp_direccion=IF(sp_direccion='',NULL,sp_direccion),
+			sp_noTelefono=IF(sp_noTelefono='',NULL,sp_noTelefono);
 		UPDATE Usuario 
 			SET nombres = IFNULL(sp_nombres,nombres), 
 				apellidos= IFNULL(sp_apellidos,apellidos), 
 				ocupacion=  IFNULL(sp_ocupacion,ocupacion), 
-				rolUsuario= IFNULL(sp_rolUsuario,rolUsuario), 
+				edad= IFNULL(sp_edad,edad), 
 				fotoPerfil= IFNULL(sp_fotoPerfil,fotoPerfil), 
 				correo= IFNULL(sp_correo,correo), 
 				username= IFNULL(sp_username,username),
 				userPassword= IFNULL(sp_userPassword,userPassword),
 				descripcion= IFNULL(sp_descripcion,descripcion),
-                direccion= IFNULL(sp_direccion,direccion)
+                direccion= IFNULL(sp_direccion,direccion),
+			    noTelefono= IFNULL(sp_noTelefono,noTelefono)
 		WHERE Usuario_id=sp_Usuario_id;
         
    END IF;
@@ -58,19 +61,18 @@ BEGIN
           DELETE FROM Usuario WHERE  Usuario_id = sp_Usuario_id;
    END IF;
     IF Operacion = 'L' THEN /*LOG IN USUARIO*/
-		SELECT Usuario_id, rolUsuario
+		SELECT Usuario_id
         FROM vUsuario
         WHERE 1=1 
-			AND correo = sp_correo
+			AND username = sp_username
             AND userPassword = sp_userPassword;
    END IF;
      IF Operacion = 'G' THEN /*GET DATOS USUARIO*/
-		SELECT Usuario_id, nombres, apellidos, ocupacion, edad, fotoPerfil, correo, username, descripcion, direccion
+		SELECT Usuario_id, nombres, apellidos, ocupacion, edad, fotoPerfil, correo, username, descripcion, direccion,noTelefono
         FROM vUsuario
         WHERE Usuario_id = sp_Usuario_id;
    END IF;
 END //
-
 
 
 /*--------------------------------------------------------------------------------ALOJAMIENTO--------------------------------------------------------------------------*/
@@ -120,17 +122,17 @@ BEGIN
    END IF;
    
    IF Operacion = 'A' THEN /*GET ALL ALOJAMIENTOS DISPONIBLES*/
-          SELECT Alojamiento_id, UsuarioVendedor_id, UsuarioArrendador_id, nombre, caracteristicas, imagenAlojamiento, direccion, isOcupado
+          SELECT Alojamiento_id, UsuarioVendedor_id, UsuarioArrendador_id, nombre,nombreCompleto, caracteristicas, imagenAlojamiento, direccion, isOcupado
           FROM vAlojamiento
           WHERE isOcupado = 0;
    END IF;
       IF Operacion = 'C' THEN /*GET ALL ALOJAMIENTOS USUARIO*/
-          SELECT Alojamiento_id, nombre, caracteristicas, imagenAlojamiento, direccion, isOcupado
+          SELECT Alojamiento_id, nombre, caracteristicas, nombreCompleto, imagenAlojamiento, direccion, isOcupado
           FROM vAlojamiento
           WHERE UsuarioArrendador_id = sp_UsuarioArrendador_id;
    END IF;
 	     IF Operacion = 'G' THEN /*GET ALOJAMIENTOS DATA*/
-          SELECT Alojamiento_id, nombre, caracteristicas, imagenAlojamiento, direccion, isOcupado
+          SELECT Alojamiento_id, nombre, caracteristicas, nombreCompleto, imagenAlojamiento, direccion, isOcupado
           FROM vAlojamiento
           WHERE Alojamiento_id = sp_Alojamiento_id;
    END IF;
@@ -207,3 +209,35 @@ BEGIN
    END IF;
 END //
 
+
+
+
+/*--------------------------------------------------------------------------------MULTIMEDIA--------------------------------------------------------------------------*/
+DROP PROCEDURE IF EXISTS sp_GestionMultimedia;
+DELIMITER //
+CREATE PROCEDURE sp_GestionMultimedia
+(
+	Operacion CHAR(1),
+	sp_Multimedia_id 		INT,
+    sp_Alojamiento_id 		INT,				
+    sp_multimedia  			MEDIUMBLOB	
+)		
+
+BEGIN
+   IF Operacion = 'I' /*INSERT MULTIMEDIA*/
+   THEN  
+		INSERT INTO Multimedia(Alojamiento_id,multimedia) 
+			VALUES (sp_Alojamiento_id,sp_multimedia);
+   END IF;
+    IF Operacion = 'D' THEN /*DELETE MULTIMEDIA*/
+          DELETE FROM Multimedia WHERE Multimedia_id = sp_Multimedia_id;
+        
+   END IF;
+   
+      IF Operacion = 'A' THEN /*GET ALL MULTIMEDIA DEL ALOJAMIENTO*/
+		SELECT Multimedia_id, multimedia
+        FROM vMultimediaAlojamiento
+        WHERE Alojamiento_id = sp_Alojamiento_id;
+   END IF;
+   
+END //
