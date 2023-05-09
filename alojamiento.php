@@ -115,7 +115,7 @@ session_start(); // Inicio mi sesion PHP
 		<div id="misRentas">
 		<section class="post-list">
 			<div class="content" id="misRentasContenido">
-					Hola
+					
 			</div>
 		</section>
 		</div>

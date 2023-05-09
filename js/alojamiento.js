@@ -39,10 +39,11 @@ $(document).ready(function () {
   function cargarDatosMisAlojamientos() {
     $.ajax({
       type: 'POST',
-      data: { funcion: 'obtenerDataTodosAlojamientosUsuario' },
+      data: { funcion: 'obtenerDataTodosAlojamientosUsuarioVendedor' },
       url: 'php/Alojamiento.php',
     })
       .done(function (data) {
+        console.log(data)
         var items = JSON.parse(data)
         $('#misAlojamientosContenido').empty()
         for (let i = 0; i < items.length; i++) {
@@ -71,8 +72,8 @@ $(document).ready(function () {
 							<p class="mb-1 verDetalle" id="` +
               items[i].Alojamiento_id +
               `">
-								<button type="button" class="btn btn-success">
-									<i class="bi bi-search"></i>
+								<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#miModalMultimedia">
+									<i class="bi bi-images"></i>
 								</button>
 							</p>
 							<p class="mb-1" data-bs-toggle="modal" data-bs-target="#miModalEditarAlojamiento">
@@ -90,6 +91,50 @@ $(document).ready(function () {
 								</button>
 							</p>
 						</div>
+					</div>
+				</article>
+
+            `
+          )
+        }
+      })
+      .fail(function (data) {
+        console.error(data)
+      })
+  }
+
+  cargarDatosMisRentas()
+  function cargarDatosMisRentas() {
+    $.ajax({
+      type: 'POST',
+      data: { funcion: 'obtenerDataTodosAlojamientosUsuarioArrendador' },
+      url: 'php/Alojamiento.php',
+    })
+      .done(function (data) {
+        var items = JSON.parse(data)
+        $('#misRentasContenido').empty()
+        for (let i = 0; i < items.length; i++) {
+          $('#misRentasContenido').append(
+            `   
+         <article class="post">
+					<div class="post-header">
+						<a class="verDetalle" id="` +
+              items[i].Alojamiento_id +
+              `">
+							<img src="data:image/jpeg;base64,` +
+              items[i].imagenAlojamiento +
+              `" class="post-img" />
+						</a>
+					</div>
+					<div class="post-body">
+						<h4><b>` +
+              items[i].nombre +
+              `</b></h4>
+						<span>Propietario:
+							<div class="vendedor">` +
+              items[i].nombreCompleto +
+              `</div>
+						</span><br />
 					</div>
 				</article>
 

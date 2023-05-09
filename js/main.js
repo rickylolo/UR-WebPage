@@ -292,6 +292,7 @@ $(document).ready(function () {
       url: 'php/Chat.php',
     })
       .done(function (data) {
+        console.log(data)
         if (data == 0) return
         var items = JSON.parse(data)
         $('#misChats').empty()

@@ -68,14 +68,14 @@ class AlojamientoAPI
         }
     }
 
-    function getAlojamientosUsuarioData($Usuario_id)
+        function getAlojamientosSearch($nombre)
     {
 
         $Alojamiento = new Alojamiento();
         $arrAlojamientos = array();
         $arrAlojamientos["Datos"] = array();
 
-        $res = $Alojamiento->getAllAlojamientosUsuarioData($Usuario_id);
+        $res = $Alojamiento->getAlojamientosSearch($nombre);
         if ($res) { // Entra si hay información
             while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
                 $obj = array(
@@ -96,6 +96,66 @@ class AlojamientoAPI
             exit();
         }
     }
+
+
+    function getAllAlojamientosUsuarioArrendadorData($Usuario_id)
+    {
+
+        $Alojamiento = new Alojamiento();
+        $arrAlojamientos = array();
+        $arrAlojamientos["Datos"] = array();
+
+        $res = $Alojamiento->getAllAlojamientosUsuarioArrendadorData($Usuario_id);
+        if ($res) { // Entra si hay información
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
+                $obj = array(
+                    "Alojamiento_id" => $row['Alojamiento_id'],
+                    "nombre" => $row['nombre'],
+                    "caracteristicas" => $row['caracteristicas'],
+                    "imagenAlojamiento" => base64_encode(($row['imagenAlojamiento'])),
+                    "direccion" => $row['direccion'],
+                    "isOcupado" => $row['isOcupado'],
+                    "nombreCompleto" => $row['nombreCompleto'],
+                    "renta" => $row['renta']
+                );
+                array_push($arrAlojamientos["Datos"], $obj);
+            }
+            echo json_encode($arrAlojamientos["Datos"]);
+        } else {
+            header("Location:../index.php");
+            exit();
+        }
+    }
+
+        function getAllAlojamientosUsuarioVendedorData($Usuario_id)
+    {
+
+        $Alojamiento = new Alojamiento();
+        $arrAlojamientos = array();
+        $arrAlojamientos["Datos"] = array();
+
+        $res = $Alojamiento->getAllAlojamientosUsuarioVendedorData($Usuario_id);
+        if ($res) { // Entra si hay información
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
+                $obj = array(
+                    "Alojamiento_id" => $row['Alojamiento_id'],
+                    "nombre" => $row['nombre'],
+                    "caracteristicas" => $row['caracteristicas'],
+                    "imagenAlojamiento" => base64_encode(($row['imagenAlojamiento'])),
+                    "direccion" => $row['direccion'],
+                    "isOcupado" => $row['isOcupado'],
+                    "nombreCompleto" => $row['nombreCompleto'],
+                    "renta" => $row['renta']
+                );
+                array_push($arrAlojamientos["Datos"], $obj);
+            }
+            echo json_encode($arrAlojamientos["Datos"]);
+        } else {
+            header("Location:../index.php");
+            exit();
+        }
+    }
+
 
     function insertarAlojamiento($UsuarioVendedor_id,$Nombre,$Caracteristicas,$Imagen,$Direccion,$Renta)
     {
@@ -195,11 +255,21 @@ if (isset($_POST['funcion'])) {
             $var = new AlojamientoAPI();
             $var->getAllAlojamientosData();
             break;
-        case "obtenerDataTodosAlojamientosUsuario":
+        case "obtenerDataTodosAlojamientosUsuarioArrendador":
             $var = new AlojamientoAPI();
             session_start();
             $id = $_SESSION['Usuario_id'];
-            $var->getAlojamientosUsuarioData($id);
+            $var->getAllAlojamientosUsuarioArrendadorData($id);
+            break;
+        case "obtenerDataTodosAlojamientosUsuarioVendedor":
+            $var = new AlojamientoAPI();
+            session_start();
+            $id = $_SESSION['Usuario_id'];
+            $var->getAllAlojamientosUsuarioVendedorData($id);
+            break;
+       case "obtenerAlojamientosSearch":
+            $var = new AlojamientoAPI();
+            $var->getAlojamientosSearch($_POST['Nombre']);
             break;
     }
 }

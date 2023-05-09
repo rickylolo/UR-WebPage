@@ -45,12 +45,31 @@ class Alojamiento extends DB
         return $query;
     }
 
-        // QUERY Get Datos Todos Alojamientos Usuario 
+        // QUERY Get Datos Todos Alojamientos Usuario Arrendador
 
-    function getAllAlojamientosUsuarioData($Usuario_id)
+    function getAllAlojamientosUsuarioVendedorData($Usuario_id)
     {
         $get = "CALL sp_GestionAlojamiento(
-            'A', # Operacion
+            'Z', # Operacion
+            NULL, # Id
+            $Usuario_id, # Usuario Vendedor Id
+            NULL, # Usuario Arrendador Id
+            NULL,  # Nombre
+            NULL,  # Caracteristicas
+            NULL,  # Imagen Alojamiento
+            NULL,  # Direccion
+            NULL  # Renta
+        ); ";
+        $query = $this->connect()->query($get);
+        return $query;
+    }
+
+            // QUERY Get Datos Todos Alojamientos Usuario Arrendador
+
+    function getAllAlojamientosUsuarioArrendadorData($Usuario_id)
+    {
+        $get = "CALL sp_GestionAlojamiento(
+            'C', # Operacion
             NULL, # Id
             NULL, # Usuario Vendedor Id
             $Usuario_id, # Usuario Arrendador Id
@@ -63,6 +82,25 @@ class Alojamiento extends DB
         $query = $this->connect()->query($get);
         return $query;
     }
+
+    
+    function getAlojamientosSearch($nombre)
+    {
+        $get = "CALL sp_GestionAlojamiento(
+            'X', # Operacion
+            NULL, # Id
+            NULL, # Usuario Vendedor Id
+            NULL, # Usuario Arrendador Id
+            '$nombre',  # Nombre
+            NULL,  # Caracteristicas
+            NULL,  # Imagen Alojamiento
+            NULL,  # Direccion
+            NULL  # Renta
+        ); ";
+        $query = $this->connect()->query($get);
+        return $query;
+    }
+
 
     // ---------------------------------------INSERTAR INFORMACION------------------------------------------
     // QUERY Insertar Alojamiento

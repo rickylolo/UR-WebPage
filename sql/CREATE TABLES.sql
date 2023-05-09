@@ -88,6 +88,7 @@ CREATE TABLE Multimedia(
 	FOREIGN KEY (Alojamiento_id) REFERENCES Alojamiento(Alojamiento_id)
 );
 
+SELECT * FROM CHAT;
 
 
 DROP TABLE IF EXISTS Mensaje;

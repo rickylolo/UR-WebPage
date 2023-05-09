@@ -90,8 +90,8 @@ session_start(); // Inicio mi sesion PHP
 		<hr class="solid" />
 		<div class="d-flex justify-content-end">
 			<div class="d-flex">
-				<input class="form-control" type="search" placeholder="Buscar alojamiento" aria-label="Search" />
-				<button class="btn btn-outline-success" type="button">
+				<input class="form-control" type="search" id="miTextoSearch" placeholder="Buscar alojamiento" aria-label="Search" />
+				<button class="btn btn-outline-success" id="buscarAlojamientoSearch" type="button">
 					<i class="bi bi-search"></i>
 				</button>
 			</div>

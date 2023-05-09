@@ -140,11 +140,22 @@ BEGIN
           FROM vAlojamiento
           WHERE UsuarioArrendador_id = sp_UsuarioArrendador_id;
    END IF;
+         IF Operacion = 'Z' THEN /*GET ALL ALOJAMIENTOS USUARIO VENDEDOR*/
+          SELECT Alojamiento_id, nombre, caracteristicas, nombreCompleto,renta, imagenAlojamiento, direccion, isOcupado
+          FROM vAlojamiento
+          WHERE UsuarioVendedor_id = sp_UsuarioVendedor_id;
+   END IF;
 	     IF Operacion = 'G' THEN /*GET ALOJAMIENTOS DATA*/
           SELECT Alojamiento_id, UsuarioVendedor_id, nombre, caracteristicas, nombreCompleto,renta, imagenAlojamiento, direccion, isOcupado
           FROM vAlojamiento
           WHERE Alojamiento_id = sp_Alojamiento_id;
    END IF;
+   
+     IF Operacion = 'X' THEN /*BUSQUEDA SEARCH*/
+   SELECT Alojamiento_id, UsuarioVendedor_id, nombre, caracteristicas, nombreCompleto,renta, imagenAlojamiento, direccion, isOcupado
+          FROM vAlojamiento
+          WHERE (sp_nombre IS NULL OR nombre LIKE CONCAT("%",sp_nombre,"%")) ;
+	END IF;
 END //
 
 
@@ -185,7 +196,7 @@ BEGIN
    # TO DO
    IF Operacion = 'G' THEN /*GET ALL MENSAJE HEADER Usuario*/
           SELECT Chat_id, Alojamiento_id, UsuarioVendedor_id, imagenAlojamiento, nombre, correo, nombreCompleto, username FROM vChat
-          WHERE UsuarioChat_1 = sp_UsuarioChat_1 OR UsuarioChat_2 = sp_UsuarioChat_2;
+          WHERE UsuarioChat_1 = sp_UsuarioChat_1 OR UsuarioChat_2 = sp_UsuarioChat_1;
    END IF;
 END //
 
