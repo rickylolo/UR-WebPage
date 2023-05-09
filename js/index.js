@@ -25,7 +25,6 @@ $(document).ready(function () {
       },
     })
       .done(function (data) {
-        console.log(data)
         var items = JSON.parse(data)
 
         if (items.length == 0) {
@@ -85,7 +84,6 @@ $(document).ready(function () {
       processData: false,
     })
       .done(function (data) {
-        console.log(data)
         $('#registroFotoPerfil').val('')
         $('#registroNombres').val('')
         $('#registroApellidos').val('')

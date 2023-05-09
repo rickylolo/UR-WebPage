@@ -181,6 +181,13 @@ body {
   object-fit: cover;
 }
 
+.miMultimedia img {
+  width: 100%;
+  max-width: 10rem;
+  height: 8rem;
+  max-height: 8rem;
+  border-radius: 5%;
+}
 @media (max-width: 920px) {
   .content {
     grid-template-columns: repeat(2, 1fr);

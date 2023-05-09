@@ -56,9 +56,12 @@ if (isset($_POST['funcion'])) {
                 $tamanoArchivo = $_FILES['file']['size'];
                 $imagenSubida = fopen($_FILES['file']['tmp_name'], 'r');
                 $binarios = fread($imagenSubida, $tamanoArchivo);
+                 $var = new multimediaAPI();
+                $var->insertarMultimedia($_POST['Alojamiento_id'], $binarios);
             }
-            $var = new multimediaAPI();
-            $var->insertarMultimedia($_POST['Alojamiento_id'], $binarios);
+           else{
+            echo '0';
+           }
             break;
         case "eliminarMultimedia":
             $var = new multimediaAPI();

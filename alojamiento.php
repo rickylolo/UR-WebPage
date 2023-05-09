@@ -186,6 +186,40 @@ session_start(); // Inicio mi sesion PHP
 	</div>
 
 
+		<!--  >MODAL WINDOW MULTIMEDIA<-->
+	<div class="modal fade" id="miModalMultimedia" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle"
+		data-bs-backdrop="static">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modalTitle">Multimedia</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<input type="hidden" id="idAlojamientoMultimedia">
+					<div id="miMultimediaAlojamiento">
+
+					</div>
+
+				</div>
+				<div class="modal-footer">
+				
+							<input type="file" accept="image/jpeg"
+								class="form-control" id="añadirMultimedia" name="añadirMultimedia" placeholder="Foto de alojamiento"
+								aria-label="Username" aria-describedby="basic-addon1">
+
+
+					<button type="button" class="btn btn-success" id="BtnRegistroMultimedia">
+								Añadir 
+							</button>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+						Regresar
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!--  >MODAL WINDOW EDITAR PERFIL<-->
 	<div class="modal fade" id="miModalEditarPerfil" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle"
 		data-bs-backdrop="static">

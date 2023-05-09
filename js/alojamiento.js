@@ -43,8 +43,7 @@ $(document).ready(function () {
       url: 'php/Alojamiento.php',
     })
       .done(function (data) {
-        console.log(data)
-        var items = JSON.parse(data)
+        let items = JSON.parse(data)
         $('#misAlojamientosContenido').empty()
         for (let i = 0; i < items.length; i++) {
           $('#misAlojamientosContenido').append(
@@ -72,7 +71,9 @@ $(document).ready(function () {
 							<p class="mb-1 verDetalle" id="` +
               items[i].Alojamiento_id +
               `">
-								<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#miModalMultimedia">
+								<button type="button" class="btn btn-success añadirMultimedia" id="` +
+              items[i].Alojamiento_id +
+              `" data-bs-toggle="modal" data-bs-target="#miModalMultimedia">
 									<i class="bi bi-images"></i>
 								</button>
 							</p>
@@ -111,7 +112,7 @@ $(document).ready(function () {
       url: 'php/Alojamiento.php',
     })
       .done(function (data) {
-        var items = JSON.parse(data)
+        let items = JSON.parse(data)
         $('#misRentasContenido').empty()
         for (let i = 0; i < items.length; i++) {
           $('#misRentasContenido').append(
@@ -157,7 +158,7 @@ $(document).ready(function () {
       url: 'php/Alojamiento.php',
     })
       .done(function (data) {
-        var items = JSON.parse(data)
+        let items = JSON.parse(data)
         // Datos para editar mi perfil
         $('#editarNombreAlojamiento').val(items[0].nombre)
         $('#editarCaracteristicasAlojamiento').val(items[0].caracteristicas)
@@ -169,6 +170,44 @@ $(document).ready(function () {
       })
   }
 
+  function cargarMultimediaAlojamiento(Alojamiento_id) {
+    $.ajax({
+      type: 'POST',
+      data: {
+        funcion: 'obtenerMultimediaAlojamiento',
+        Alojamiento_id: Alojamiento_id,
+      },
+      url: 'php/Multimedia.php',
+    })
+      .done(function (data) {
+        let items = JSON.parse(data)
+        $('#miMultimediaAlojamiento').empty()
+        for (let i = 0; i < items.length; i++) {
+          $('#miMultimediaAlojamiento').append(
+            `<a class="p-4 list-group-item list-group-item-action" aria-current="true">
+                <div class="miMultimedia d-flex w-100 justify-content-between">
+                    <div class="d-flex flex-fill">
+                        <img  src="data:image/jpeg;base64,` +
+              items[i].multimedia +
+              `" >
+                    </div>
+                    <p class="mb-1"><button type="button" id="` +
+              items[i].Multimedia_id +
+              `" class="btn eliminarMultimedia btn-danger"><i class="bi bi-trash"></i></button>
+                    </p>
+
+                </div>
+
+
+            </a>`
+          )
+        }
+      })
+      .fail(function (data) {
+        console.error(data)
+      })
+  }
+  // ------------ EDITAR ALOJAMIENTO DATOS ------------
   $('#misAlojamientosContenido').on(
     'click',
     '.editarAlojamiento',
@@ -180,18 +219,30 @@ $(document).ready(function () {
     cargarDatoAlojamiento(miIdAlojamiento)
   }
 
+  // ------------ VER MULTIMEDIA ------------
+  $('#misAlojamientosContenido').on(
+    'click',
+    '.añadirMultimedia',
+    funcAñadirMultimedia
+  )
+  function funcAñadirMultimedia() {
+    let miIdAlojamiento = $(this).attr('id')
+    $('#idAlojamientoMultimedia').val(miIdAlojamiento)
+    cargarMultimediaAlojamiento(miIdAlojamiento)
+  }
+
   // ----------------------------- REGISTRO DATOS -----------------
   //------------------------- ALOJAMIENTO ----------------------------
   $('#BtnRegistroAlojamiento').click(funcRegistrarAlojamiento)
   function funcRegistrarAlojamiento() {
-    var form_data = new FormData()
-    var file_data = $('#registroImagenAlojamiento').prop('files')[0]
-    var nombreAlojamiento = $('#registroNombreAlojamiento').val()
-    var caracteristicasAlojamiento = $(
+    let form_data = new FormData()
+    let file_data = $('#registroImagenAlojamiento').prop('files')[0]
+    let nombreAlojamiento = $('#registroNombreAlojamiento').val()
+    let caracteristicasAlojamiento = $(
       '#registroCaracteristicasAlojamiento'
     ).val()
-    var direccionAlojamiento = $('#registroDireccionAlojamiento').val()
-    var costoAlojamiento = $('#registroRentaAlojamiento').val()
+    let direccionAlojamiento = $('#registroDireccionAlojamiento').val()
+    let costoAlojamiento = $('#registroRentaAlojamiento').val()
 
     form_data.append('file', file_data)
     form_data.append('funcion', 'registrarAlojamiento')
@@ -224,19 +275,51 @@ $(document).ready(function () {
       })
   }
 
+  //------------------------- MULTIMEDIA ALOJAMIENTO ----------------------------
+  $('#BtnRegistroMultimedia').click(funcRegistrarMultimediaAlojamiento)
+  function funcRegistrarMultimediaAlojamiento() {
+    let form_data = new FormData()
+    let file_data = $('#añadirMultimedia').prop('files')[0]
+    let AlojamientoId = $('#idAlojamientoMultimedia').val()
+
+    form_data.append('file', file_data)
+    form_data.append('funcion', 'registrarMultimedia')
+    form_data.append('Alojamiento_id', AlojamientoId)
+
+    $.ajax({
+      url: 'php/Multimedia.php',
+      type: 'POST',
+      cache: false,
+      contentType: false,
+      data: form_data,
+      dataType: 'text',
+      enctype: 'multipart/form-data',
+      processData: false,
+    })
+      .done(function () {
+        $('#añadirMultimedia').val('')
+
+        cargarMultimediaAlojamiento(AlojamientoId)
+        alert('Registro de imagen correctamente')
+      })
+      // MANEJO DE ERRORES DEL SERVIDOR
+      .fail(function (jqXHR, textStatus, errorThrown) {
+        console.log('Error: ' + errorThrown)
+      })
+  }
   // ----------------------------- ACTUALIZAR DATOS -----------------
   //------------------------- ALOJAMIENTO ----------------------------
   $('#BtnActualizarAlojamiento').click(funcActualizarAlojamiento)
   function funcActualizarAlojamiento() {
-    var Alojamiento_id = $('#miAlojamientoSeleccionado').val()
-    var form_data = new FormData()
-    var file_data = $('#editarImagenAlojamiento').prop('files')[0]
-    var nombreAlojamiento = $('#editarNombreAlojamiento').val()
-    var caracteristicasAlojamiento = $(
+    let Alojamiento_id = $('#miAlojamientoSeleccionado').val()
+    let form_data = new FormData()
+    let file_data = $('#editarImagenAlojamiento').prop('files')[0]
+    let nombreAlojamiento = $('#editarNombreAlojamiento').val()
+    let caracteristicasAlojamiento = $(
       '#editarCaracteristicasAlojamiento'
     ).val()
-    var direccionAlojamiento = $('#editarDireccionAlojamiento').val()
-    var costoAlojamiento = $('#editarRentaAlojamiento').val()
+    let direccionAlojamiento = $('#editarDireccionAlojamiento').val()
+    let costoAlojamiento = $('#editarRentaAlojamiento').val()
 
     form_data.append('file', file_data)
     form_data.append('funcion', 'actualizarAlojamiento')
@@ -255,7 +338,7 @@ $(document).ready(function () {
       enctype: 'multipart/form-data',
       processData: false,
     })
-      .done(function (data) {
+      .done(function () {
         $('#miAlojamientoSeleccionado').val('')
         $('#editarImagenAlojamiento').val('')
         $('#editarNombreAlojamiento').val('')
@@ -292,6 +375,34 @@ $(document).ready(function () {
         .done(function () {
           cargarDatosMisAlojamientos()
           alert('Alojamiento eliminado correctamente')
+        })
+        .fail(function (data) {
+          console.error(data)
+        })
+    }
+  }
+
+  //------------------------- MULTIMEDIA ----------------------------
+  $('#miMultimediaAlojamiento').on(
+    'click',
+    '.eliminarMultimedia',
+    funcEliminarMultimedia
+  )
+  function funcEliminarMultimedia() {
+    let miIdMultimedia = $(this).attr('id')
+    let Alojamiento_id = $('#idAlojamientoMultimedia').val()
+    if (confirm('¿Seguro deseas eliminar esta imagen?')) {
+      $.ajax({
+        type: 'POST',
+        data: {
+          funcion: 'eliminarMultimedia',
+          Multimedia_id: miIdMultimedia,
+        },
+        url: 'php/Multimedia.php',
+      })
+        .done(function () {
+          cargarMultimediaAlojamiento(Alojamiento_id)
+          alert('Imagen eliminada correctamente')
         })
         .fail(function (data) {
           console.error(data)

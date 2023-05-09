@@ -117,9 +117,7 @@ $(document).ready(function () {
 				<div class="card" style="width: 28rem">
 					<div class="deslizador">
 						<div class="deslizador-interno" id="deslizadorDetalle">
-							<img src="data:image/jpeg;base64,` +
-            items[0].imagenAlojamiento +
-            `">
+				
 						</div>
 					</div>
 					<div class="card-body">
@@ -184,6 +182,7 @@ $(document).ready(function () {
 		</div>
             `
         )
+        cargarMultimediaDeslizador(items[0].Alojamiento_id)
         cargarDatosPropietarioDetalle(items[0].UsuarioVendedor_id)
       })
       .fail(function (data) {
@@ -292,7 +291,6 @@ $(document).ready(function () {
       url: 'php/Chat.php',
     })
       .done(function (data) {
-        console.log(data)
         if (data == 0) return
         var items = JSON.parse(data)
         $('#misChats').empty()
@@ -448,6 +446,33 @@ $(document).ready(function () {
       })
   }
 
+  function cargarMultimediaDeslizador(Alojamiento_id) {
+    $.ajax({
+      type: 'POST',
+      data: {
+        funcion: 'obtenerMultimediaAlojamiento',
+        Alojamiento_id: Alojamiento_id,
+      },
+      url: 'php/Multimedia.php',
+    })
+      .done(function (data) {
+        let items = JSON.parse(data)
+        $('#deslizadorDetalle').empty()
+        for (let i = 0; i < items.length; i++) {
+          $('#deslizadorDetalle').append(
+            `
+                        <img  src="data:image/jpeg;base64,` +
+              items[i].multimedia +
+              `" >`
+          )
+        }
+
+        iniciarDeslizador()
+      })
+      .fail(function (data) {
+        console.error(data)
+      })
+  }
   // ----------------------------- REGISTRO DATOS -----------------
 
   function funcRegistrarMensaje(Usuario2, idAlojamiento) {
@@ -605,6 +630,35 @@ $(document).ready(function () {
       .fail(function (jqXHR, textStatus, errorThrown) {
         console.log('Error: ' + errorThrown)
       })
+  }
+
+  // SLIDER
+  function iniciarDeslizador() {
+    const deslizadorInterno = $('#deslizadorDetalle')
+    let contador = 0
+    const cantidadDeDiapositivas = deslizadorInterno.children().length
+
+    // Función para mover el deslizador
+    function deslizar() {
+      if (contador >= cantidadDeDiapositivas - 1) {
+        contador = 0
+      } else {
+        contador++
+      }
+      deslizadorInterno.css('transform', `translateX(-${contador * 28}rem)`)
+    }
+
+    // Eventos para pausar y reanudar el deslizador al pasar el mouse
+    deslizadorInterno.on('mouseenter', () => {
+      clearInterval(intervalo)
+    })
+
+    deslizadorInterno.on('mouseleave', () => {
+      intervalo = setInterval(deslizar, 2000)
+    })
+
+    // Iniciar el deslizador automáticamente
+    let intervalo = setInterval(deslizar, 2000)
   }
 })
 
