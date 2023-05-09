@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // ----------------------------- CARGAR DATOS -----------------
   function cargaAlojamientoDetalle(Alojamiento_id) {
     $.ajax({
       type: 'POST',
@@ -31,7 +32,7 @@ $(document).ready(function () {
             items[0].renta +
             ` MXN Mensuales
 						</p>
-						<a href="" id="` +
+						<a id="` +
             items[0].Alojamiento_id +
             `"
 							class="btn btn-primary d-flex justify-content-center rentarAlojamiento">Rentar</a>
@@ -106,6 +107,9 @@ $(document).ready(function () {
         $('#propietarioDetalle').empty()
         $('#propietarioDetalle').append(
           `			
+          <input type="hidden" id="miUsuarioPropietario" value="` +
+            items[0].Usuario_id +
+            `">
                	<div class="p-4 fs-5 text-center text-muted">Propietario</div>
 					<div class="d-flex flex-fill">
                 <div class="d-flex flex-row pfpPerfil">
@@ -124,7 +128,7 @@ $(document).ready(function () {
 										<button type="button" data-bs-toggle="modal" id="` +
             items[0].Usuario_id +
             `" data-bs-target="#miModalMensaje"
-											class="btn btn-primary">
+											class="btn btn-primary iniciarChat">
 											<i class="bi bi-chat-left"></i> Enviar Mensaje
 										</button>
 									</div>
@@ -162,16 +166,23 @@ $(document).ready(function () {
             </div>			
             `
         )
+
+        // Iniciar Chat
+        $('#propietarioDetalle').on('click', '.iniciarChat', funcIniciarChat)
+        function funcIniciarChat() {
+          let miIdPropietario = $('#miUsuarioPropietario').val()
+          let miIdUserLoggeado = $('#miUserIdActual').val()
+          if (miIdPropietario == miIdUserLoggeado) {
+            alert('No puedes iniciar un chat contigo mismo')
+            return
+          }
+          let miIdAlojamiento = $('#miAlojamientoSeleccionado').val()
+          funcRegistrarMensaje(miIdPropietario, miIdAlojamiento)
+        }
       })
       .fail(function (data) {
         console.error(data)
       })
-  }
-
-  $('#AlojamientosFYP').on('click', '.verDetalle', funcVerAlojamiento)
-  function funcVerAlojamiento() {
-    let miIdAlojamiento = $(this).attr('id')
-    cargaAlojamientoDetalle(miIdAlojamiento)
   }
 
   cargarDatosAlojamientos()
@@ -213,6 +224,94 @@ $(document).ready(function () {
 				</article>
             `
           )
+        }
+      })
+      .fail(function (data) {
+        console.error(data)
+      })
+  }
+
+  // Ver detalle alojamiento
+  $('#AlojamientosFYP').on('click', '.verDetalle', funcVerAlojamiento)
+  function funcVerAlojamiento() {
+    let miIdAlojamiento = $(this).attr('id')
+    $('#miAlojamientoSeleccionado').val(miIdAlojamiento)
+    cargaAlojamientoDetalle(miIdAlojamiento)
+    $('#detalleAlojamiento').show()
+  }
+
+  // ----------------------------- ACTUALIZAR DATOS -----------------
+
+  // Rentar Alojamiento
+  $('#detalleAlojamiento').on(
+    'click',
+    '.rentarAlojamiento',
+    funcRentarAlojamiento
+  )
+  function funcRentarAlojamiento() {
+    let miIdPropietario = $('#miUsuarioPropietario').val()
+    let miIdUserLoggeado = $('#miUserIdActual').val()
+    if (miIdPropietario == miIdUserLoggeado) {
+      alert('No puedes rentar tu propiedad')
+      return
+    }
+    let miIdAlojamiento = $(this).attr('id')
+    if (confirm('¿Estas seguro de rentar este alojamiento?')) {
+      $.ajax({
+        type: 'POST',
+        data: {
+          funcion: 'actualizarAlojamientoEstado',
+          Alojamiento_id: miIdAlojamiento,
+        },
+        url: 'php/Alojamiento.php',
+      })
+        .done(function () {
+          alert('Rentado Correctamente')
+          cargarDatosAlojamientos()
+          $('#detalleAlojamiento').hide()
+        })
+        .fail(function (data) {
+          console.error(data)
+        })
+    }
+  }
+
+  // ----------------------------- REGISTRO DATOS -----------------
+
+  function funcRegistrarMensaje(Usuario2, idAlojamiento) {
+    $.ajax({
+      type: 'POST',
+      data: {
+        funcion: 'insertarChat',
+        Usuario_2: Usuario2,
+        Alojamiento_id: idAlojamiento,
+      },
+      url: 'php/Chat.php',
+    })
+      .done(function (data) {
+        if (data == 0) {
+          $('#miBodyMensajes').empty()
+          $('#miFooterMensajes').empty()
+          $('#miBodyMensajes').append(
+            `
+             <div class="alert alert-warning" role="alert">
+                ¡No has Iniciado Sesión!, Debes iniciar sesión para chatear con un Instructor
+             </div>
+        
+        `
+          )
+          $('#miFooterMensajes').append(
+            `
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#miModalLogin">
+                                      Iniciar Sesión
+              </button>
+          `
+          )
+          return
+        }
+        if (data == 1) {
+          cargarMisChats()
+          return
         }
       })
       .fail(function (data) {

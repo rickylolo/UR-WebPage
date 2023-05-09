@@ -23,11 +23,11 @@ LEFT JOIN Usuario C ON C.Usuario_id= B.UsuarioVendedor_id;
 DROP VIEW IF EXISTS vMensaje;
 
 CREATE VIEW vMensaje AS
-SELECT Mensaje_id, B.Alojamiento_id, C.Usuario_id, A.Chat_id, texto, A.tiempoRegistro, fotoPerfil,  CONCAT(C.nombres,' ', apellidos) nombreUsuario
+SELECT Mensaje_id, B.UsuarioChat_1, B.UsuarioChat_2, B.Alojamiento_id, C.Usuario_id, A.Chat_id, texto, A.tiempoRegistro, fotoPerfil,  CONCAT(C.nombres,' ', apellidos) nombreUsuario
 FROM Mensaje A
 LEFT JOIN Usuario C ON C.Usuario_id= A.Usuario_id
 LEFT JOIN Chat B ON B.Chat_id= A.Chat_id
-ORDER BY A.tiempoRegistro DESC;
+ORDER BY A.tiempoRegistro ASC;
 
 /*--------------------------------------------------------------------------------ALOJAMIENTO--------------------------------------------------------------------------*/
 DROP VIEW IF EXISTS vAlojamiento;

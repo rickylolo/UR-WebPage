@@ -114,7 +114,6 @@ if (isset($_POST['funcion'])) {
         break;
 
         case "insertarMensaje":
-
             session_start();
             if (!empty($_SESSION)) {          
                 $id = $_SESSION['Usuario_id'];

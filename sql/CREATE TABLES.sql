@@ -76,7 +76,6 @@ CREATE TABLE Mensaje(
  CONSTRAINT FK_Mensaje_Chat
 	FOREIGN KEY (Chat_id) REFERENCES Chat(Chat_id)
 );
-
 -- 												TABLA DE MULTIMEDIA--
 DROP TABLE IF EXISTS Multimedia;
 CREATE TABLE Multimedia(

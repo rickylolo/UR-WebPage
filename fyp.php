@@ -22,6 +22,11 @@ session_start(); // Inicio mi sesion PHP
 </head>
 
 <body>
+	    <?php
+    if ($_SESSION != NULL) { // Si mi sesion no es nula significa que un usuario inicio sesion
+        echo '<input type="hidden" value="' . $_SESSION['Usuario_id'] . '" id="miUserIdActual">'; // Valor del id del usuario en un campo invisible
+    }
+    ?>
 	<nav class="navbar sticky-top navbar-expand-lg navbar-light">
 		<div class="container">
 			<div>
@@ -72,7 +77,7 @@ session_start(); // Inicio mi sesion PHP
 			</div>
 		</div>
 	</nav>
-
+	<input type="hidden" id="miAlojamientoSeleccionado">
 	<!--                 Alojamientos        -->
 	<div class="container" id="detalleAlojamiento">
 		
@@ -98,130 +103,39 @@ session_start(); // Inicio mi sesion PHP
 		</section>
 	</div>
 
-	<!--  >MODAL WINDOW MENSAJES<-->
-	<div class="modal fade" id="miModalMensaje" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle"
-		data-bs-backdrop="static">
-		<div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="modalTitle">Chat</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<div class="d-flex flex-row justify-content-between">
-						<div id="misChats">
-							<div class="list-group">
-								<a href="" class="list-group-item list-group-item-action" aria-current="true">
-									<div class="d-flex flex-row miImagen chat">
-										<div class="p-2"><img src="imagenes/img1.jpg" /></div>
-										<div class="p-2">
-											<div class="d-flex flex-column">
-												<p class="fs-5 p-1 fw-bold">Alojamiento Encinos</p>
-												<p class="text-muted fs-6 fw-light" id="vendedor">
-													Propietario: Brandon Dylan Regil Llovera
-												</p>
-											</div>
-										</div>
-									</div>
-								</a>
-								<a href="" class="list-group-item list-group-item-action" aria-current="true">
-									<div class="d-flex flex-row miImagen chat">
-										<div class="p-2"><img src="imagenes/img2.jpg" /></div>
-										<div class="p-2">
-											<div class="d-flex flex-column">
-												<p class="fs-5 p-1 fw-bold">Alojamiento Anahuac</p>
-												<p class="text-muted fs-6 fw-light" id="vendedor">
-													Propietario: Brandon Dylan Regil Llovera
-												</p>
-											</div>
-										</div>
-									</div>
-								</a>
-								<a href="#" class="list-group-item list-group-item-action" aria-current="true">
-									<div class="d-flex flex-row miImagen chat">
-										<div class="p-2">
-											<img src="imagenes/img3.jpg" class="pfp" />
-										</div>
-										<div class="p-2">
-											<div class="d-flex flex-column">
-												<p class="fs-5 p-1 fw-bold">Alojamiento Apodaca</p>
-												<p class="text-muted fs-6 fw-light" id="vendedor">
-													Propietario: Brandon Dylan Regil Llovera
-												</p>
-											</div>
-										</div>
-									</div>
-								</a>
-							</div>
-						</div>
-						<div id="miMensaje" class="p-2 flex-fill">
-							<div class="d-flex flex-row miImagen">
-								<div class="p-2">
-									<img src="imagenes/img3.jpg" class="pfp" />
-								</div>
-								<div class="p-2">
-									<div class="d-flex flex-column">
-										<p class="fs-4 p-1 fw-bold">Alojamiento Apodaca</p>
-										<p class="text-muted fs-6" id="correo">
-											Propietario: Brandon Dylan Regil Llovera
-										</p>
-									</div>
-								</div>
-							</div>
-							<hr class="solid" />
-							<div class="list-group">
-								<a href="#" class="list-group-item list-group-item-action bg-" aria-current="true">
-									<div class="miImagen misMensajes d-flex w-100 justify-content-between">
-										<div class="d-flex">
-											<img src="imagenes/imagen-dario.png" class="pfp rounded-circle" />
-											<div class="align-self-center">
-												<p class="fs-6 p-3 fw-bold align-middle">Dario</p>
-											</div>
-										</div>
-										<div class="align-self-start">
-											<small class="text-muted p-3">9:17pm 23/Feb/2023</small>
-										</div>
-									</div>
-									<hr class="solid" />
-									<p class="mb-1">
-										Buenas tardes quisiera rentar el inmueble
-									</p>
-								</a>
-								<hr class="solid" />
-								<a href="#" class="list-group-item list-group-item-action bg-" aria-current="true">
-									<div class="miImagen misMensajes d-flex w-100 justify-content-between">
-										<div class="d-flex">
-											<img src="imagenes/avatar.jpg" class="pfp rounded-circle" />
-											<div class="align-self-center">
-												<p class="fs-6 p-3 fw-bold align-middle">
-													WailyingDylan
-												</p>
-											</div>
-										</div>
-										<div class="align-self-start">
-											<small class="text-muted p-3">8:35pm 22/Feb/2023</small>
-										</div>
-									</div>
-									<hr class="solid" />
-									<p class="mb-1">Por supuesto, esta disponible</p>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<form class="d-flex" role="search">
-						<input class="form-control me-2" type="search" placeholder="Escribe aqui tu mensaje"
-							aria-label="Buscar" />
+    <!--  >MODAL WINDOW MENSAJES<-->
+    <div class="modal fade" id="miModalMensaje" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle" data-bs-backdrop="static">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalTitle">Chat</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                    <input type="hidden" id="miCursoSeleccionadoMensajes">
+                <div class="modal-body" id="miBodyMensajes">
+                
+                    <div class="d-flex flex-row justify-content-between">
+     
+                        <div class="list-group" id="misChats">
+                           
+                        </div>
+                        <div id="miMensaje" class="ps-2 flex-fill">
 
-						<button class="btn btn-outline-primary" type="submit">
-							<i class="bi bi-send"></i>
-						</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading">Aqui apareceran tus mensajes</h4>
+                            <p>Aqui iran el contenido de tus mensajes selecciona un chat de el lado izquierdo para continuar</p>
+                            <hr>               
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" id="miFooterMensajes">
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 	<!--  >MODAL WINDOW PERFIL<-->
 	<div class="modal fade" id="miModalPerfil" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle"

@@ -1,3 +1,9 @@
+<?php
+include_once 'php\Usuario.php';
+session_start(); // Inicio mi sesion PHP
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
