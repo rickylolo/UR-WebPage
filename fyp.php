@@ -137,10 +137,11 @@ session_start(); // Inicio mi sesion PHP
     </div>
 
 
+
 	<!--  >MODAL WINDOW PERFIL<-->
 	<div class="modal fade" id="miModalPerfil" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle"
 		data-bs-backdrop="static">
-		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+		<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" id="modalTitle">Perfil</h4>
@@ -166,6 +167,7 @@ session_start(); // Inicio mi sesion PHP
 			</div>
 		</div>
 	</div>
+
 
 
 	<!--  >MODAL WINDOW EDITAR PERFIL<-->
@@ -241,7 +243,7 @@ session_start(); // Inicio mi sesion PHP
 						</div>
 
 						<div class="form-outline pb-2">
-							<textarea class="form-control" id="editarDescripcion" aria-label="descripcion"></textarea>
+							<textarea class="form-control" rows="10" id="editarDescripcion" aria-label="descripcion"></textarea>
 							<label class="form-label" for="editarDescripcion">Descripción</label>
 						</div>
 
