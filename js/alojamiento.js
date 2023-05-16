@@ -235,7 +235,6 @@ $(document).ready(function () {
   //------------------------- ALOJAMIENTO ----------------------------
   $('#BtnRegistroAlojamiento').click(funcRegistrarAlojamiento)
   function funcRegistrarAlojamiento() {
-    let form_data = new FormData()
     let file_data = $('#registroImagenAlojamiento').prop('files')[0]
     let nombreAlojamiento = $('#registroNombreAlojamiento').val()
     let caracteristicasAlojamiento = $(
@@ -243,7 +242,21 @@ $(document).ready(function () {
     ).val()
     let direccionAlojamiento = $('#registroDireccionAlojamiento').val()
     let costoAlojamiento = $('#registroRentaAlojamiento').val()
+    if (!file_data) {
+      alert('Favor de cargar la imagen')
+      return
+    }
+    if (
+      nombreAlojamiento == '' ||
+      caracteristicasAlojamiento == '' ||
+      direccionAlojamiento == '' ||
+      costoAlojamiento == ''
+    ) {
+      alert('Faltan llenar Campos')
+      return
+    }
 
+    let form_data = new FormData()
     form_data.append('file', file_data)
     form_data.append('funcion', 'registrarAlojamiento')
     form_data.append('Nombre', nombreAlojamiento)
@@ -260,7 +273,8 @@ $(document).ready(function () {
       enctype: 'multipart/form-data',
       processData: false,
     })
-      .done(function (data) {
+      .done(function () {
+        $('#miModalAlojamiento').modal('hide')
         $('#registroNombreAlojamiento').val('')
         $('#registroImagenAlojamiento').val('')
         $('#registroCaracteristicasAlojamiento').val('')
@@ -278,10 +292,14 @@ $(document).ready(function () {
   //------------------------- MULTIMEDIA ALOJAMIENTO ----------------------------
   $('#BtnRegistroMultimedia').click(funcRegistrarMultimediaAlojamiento)
   function funcRegistrarMultimediaAlojamiento() {
-    let form_data = new FormData()
     let file_data = $('#añadirMultimedia').prop('files')[0]
     let AlojamientoId = $('#idAlojamientoMultimedia').val()
+    if (!file_data) {
+      alert('Favor de cargar la imagen')
+      return
+    }
 
+    let form_data = new FormData()
     form_data.append('file', file_data)
     form_data.append('funcion', 'registrarMultimedia')
     form_data.append('Alojamiento_id', AlojamientoId)
@@ -312,7 +330,7 @@ $(document).ready(function () {
   $('#BtnActualizarAlojamiento').click(funcActualizarAlojamiento)
   function funcActualizarAlojamiento() {
     let Alojamiento_id = $('#miAlojamientoSeleccionado').val()
-    let form_data = new FormData()
+
     let file_data = $('#editarImagenAlojamiento').prop('files')[0]
     let nombreAlojamiento = $('#editarNombreAlojamiento').val()
     let caracteristicasAlojamiento = $(
@@ -321,6 +339,17 @@ $(document).ready(function () {
     let direccionAlojamiento = $('#editarDireccionAlojamiento').val()
     let costoAlojamiento = $('#editarRentaAlojamiento').val()
 
+    if (
+      nombreAlojamiento == '' ||
+      caracteristicasAlojamiento == '' ||
+      direccionAlojamiento == '' ||
+      costoAlojamiento == ''
+    ) {
+      alert('Faltan llenar Campos')
+      return
+    }
+
+    let form_data = new FormData()
     form_data.append('file', file_data)
     form_data.append('funcion', 'actualizarAlojamiento')
     form_data.append('Alojamiento_id', Alojamiento_id)
@@ -339,6 +368,7 @@ $(document).ready(function () {
       processData: false,
     })
       .done(function () {
+        $('#miModalEditarAlojamiento').modal('hide')
         $('#miAlojamientoSeleccionado').val('')
         $('#editarImagenAlojamiento').val('')
         $('#editarNombreAlojamiento').val('')

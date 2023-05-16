@@ -13,7 +13,7 @@ class DB
         $this->host = 'localhost';
         $this->db = 'UR_WEBPAGE';
         $this->user = 'root';
-        $this->password = '1872756BdRl';
+        $this->password = '1872756BdRl'; 
         $this->charset = 'utf8mb4';
     }
 

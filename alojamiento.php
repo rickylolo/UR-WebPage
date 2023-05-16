@@ -166,13 +166,15 @@ session_start(); // Inicio mi sesion PHP
 				</div>
 				<div class="modal-body">
 
-					<div class="d-flex flex-row justify-content-center ps-4 pfpPerfil">
+					<div class="d-flex ps-4 pfpPerfil">
+					
 						<div class="p-1">
-							<img src="imagenes/imagen-dario.png" id="miImagenPerfil" class="rounded-circle" />
+							<img src="" id="miImagenPerfil" class="rounded-circle" />
 						</div>
-						<div class="p-3" id="misDatosPerfil">
+						<div class="p-3 flex-grow-1 " id="misDatosPerfil">
 
 						</div>
+					
 					</div>
 
 				</div>
@@ -230,9 +232,9 @@ session_start(); // Inicio mi sesion PHP
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body p-4">
-					<form>
+					<form class="p-4">
 
-						<div class="image-upload d-flex justify-content-center pt-4 pb-4">
+						<div class="image-upload d-flex justify-content-center pb-4">
 							<label for="editarAvatar">
 								<img src="" alt="" id="E_imgFoto" width="250px" height="250px">
 							</label>
@@ -365,12 +367,11 @@ session_start(); // Inicio mi sesion PHP
 					    <div class="fs-6 text-center fw-bold pb-4">Costo Renta Mensual:</div>
 
 						<div class="form-outline">
-							<input type="text" id="registroRentaAlojamiento" class="form-control" />
+							<input type="number" id="registroRentaAlojamiento" class="form-control" />
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-success" id="BtnRegistroAlojamiento"
-							data-bs-dismiss="modal">
+						<button type="button" class="btn btn-success" id="BtnRegistroAlojamiento">
 							Añadir Alojamiento
 						</button>
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -428,8 +429,7 @@ session_start(); // Inicio mi sesion PHP
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" id="BtnActualizarAlojamiento"
-							data-bs-dismiss="modal">
+						<button type="button" class="btn btn-primary" id="BtnActualizarAlojamiento"	>
 							Actualizar Alojamiento
 						</button>
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

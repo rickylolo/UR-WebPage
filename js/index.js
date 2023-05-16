@@ -15,6 +15,10 @@ $(document).ready(function () {
   function funcIniciarSesion() {
     var usuario = $('#loginUsuario').val()
     var pass = $('#loginPassword').val()
+    if (usuario == '' || pass == '') {
+      alert('Favor de llenar todos los campos')
+      return
+    }
     $.ajax({
       url: 'php/Usuario.php',
       type: 'POST',
@@ -43,14 +47,6 @@ $(document).ready(function () {
   //------------------------- USUARIO ----------------------------
   $('#BtnRegistro').click(funcRegistrarUsuario)
   function funcRegistrarUsuario() {
-    //Verificacion contraseña
-    var password = $('#registroPassword').val()
-    var confirmarPassword = $('#registroConfirmarPassword').val()
-    if (password != confirmarPassword) {
-      alert('La contraseña no coincide reintenta nuevamente')
-      return
-    }
-    var form_data = new FormData()
     var file_data = $('#registroFotoPerfil').prop('files')[0]
     var nombres = $('#registroNombres').val()
     var apellidos = $('#registroApellidos').val()
@@ -61,6 +57,37 @@ $(document).ready(function () {
     var descripcion = $('#registroDescripcion').val()
     var direccion = $('#registroDireccion').val()
     var telefono = $('#registroTelefono').val()
+    var password = $('#registroPassword').val()
+    var confirmarPassword = $('#registroConfirmarPassword').val()
+    //Verificacion contraseña
+    if (password != confirmarPassword) {
+      alert('La contraseña no coincide reintenta nuevamente')
+      return
+    }
+
+    if (!file_data) {
+      alert('Favor de cargar la imagen')
+      return
+    }
+    if (
+      nombres == '' ||
+      apellidos == '' ||
+      ocupacion == '' ||
+      edad == '' ||
+      correo == '' ||
+      nombreUsuario == '' ||
+      descripcion == '' ||
+      direccion == '' ||
+      telefono == '' ||
+      password == '' ||
+      confirmarPassword == ''
+    ) {
+      alert('Faltan llenar Campos')
+      return
+    }
+
+    var form_data = new FormData()
+
     form_data.append('file', file_data)
     form_data.append('funcion', 'registrarUsuario')
     form_data.append('Nombres', nombres)
@@ -83,7 +110,7 @@ $(document).ready(function () {
       enctype: 'multipart/form-data',
       processData: false,
     })
-      .done(function (data) {
+      .done(function () {
         $('#registroFotoPerfil').val('')
         $('#registroNombres').val('')
         $('#registroApellidos').val('')

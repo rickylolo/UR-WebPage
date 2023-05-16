@@ -25,8 +25,8 @@ $(document).ready(function () {
         $('#misDatosPerfil').empty()
         $('#misDatosPerfil').append(
           `							
-        
-          <div class="d-flex flex-column">
+
+          <div class="flex-column">
 									<div class="d-flex justify-content-between">
 										<p class="fs-4 p-1 fw-bold" id="miUsuarioPerfil">` +
             items[0].username +
@@ -74,7 +74,7 @@ $(document).ready(function () {
             `
 									</p>
 
-                		</div>`
+                  </div>`
         )
         document.getElementById('miImagenPerfil').src =
           'data:image/jpeg;base64,' + items[0].fotoPerfil
@@ -582,14 +582,6 @@ $(document).ready(function () {
   //------------------------- USUARIO ----------------------------
   $('#BtnEditarPerfil').click(funcActualizarUsuario)
   function funcActualizarUsuario() {
-    //Verificacion contraseña
-    var password = $('#editarPassword').val()
-    var confirmarPassword = $('#editarConfirmarPassword').val()
-    if (password != confirmarPassword) {
-      alert('La contraseña no coincide reintenta nuevamente')
-      return
-    }
-    var form_data = new FormData()
     var file_data = $('#editarAvatar').prop('files')[0]
     var nombres = $('#editarNombres').val()
     var apellidos = $('#editarApellidos').val()
@@ -600,6 +592,29 @@ $(document).ready(function () {
     var descripcion = $('#editarDescripcion').val()
     var direccion = $('#editarDireccion').val()
     var telefono = $('#editarTelefono').val()
+    var password = $('#editarPassword').val()
+    //Verificacion contraseña
+    var confirmarPassword = $('#editarConfirmarPassword').val()
+    if (password != confirmarPassword) {
+      alert('La contraseña no coincide reintenta nuevamente')
+      return
+    }
+
+    if (
+      nombres == '' ||
+      apellidos == '' ||
+      ocupacion == '' ||
+      edad == '' ||
+      correo == '' ||
+      nombreUsuario == '' ||
+      descripcion == '' ||
+      direccion == '' ||
+      telefono == ''
+    ) {
+      alert('Faltan llenar Campos')
+      return
+    }
+    var form_data = new FormData()
     form_data.append('file', file_data)
     form_data.append('funcion', 'actualizarUser')
     form_data.append('Nombres', nombres)
@@ -623,6 +638,8 @@ $(document).ready(function () {
       processData: false,
     })
       .done(function () {
+        $('#miModalEditarPerfil').modal('hide')
+        $('#miModalPerfil').modal('show')
         cargarDatosUser()
         alert('Usuario Actualizado Correctamente')
       })
