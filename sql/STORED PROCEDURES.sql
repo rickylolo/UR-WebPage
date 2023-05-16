@@ -103,6 +103,9 @@ BEGIN
    THEN  
 		INSERT INTO Alojamiento(UsuarioVendedor_id,nombre,caracteristicas,imagenAlojamiento,direccion,renta) 
 			VALUES (sp_UsuarioVendedor_id,sp_nombre,sp_caracteristicas,sp_imagenAlojamiento,sp_direccion,sp_renta);
+            
+            INSERT INTO Multimedia(Alojamiento_id,multimedia) 
+            VALUES (LAST_INSERT_ID(),sp_imagenAlojamiento);
    END IF;
    
    IF Operacion = 'E'  /*EDIT ALOJAMIENTO*/
@@ -127,6 +130,7 @@ BEGIN
          WHERE Alojamiento_id=sp_Alojamiento_id;
    END IF;
    IF Operacion = 'D' THEN /*DELETE ALOJAMIENTO*/
+		  DELETE FROM Multimedia WHERE Alojamiento_id=sp_Alojamiento_id;	
           DELETE FROM Alojamiento WHERE Alojamiento_id=sp_Alojamiento_id;
    END IF;
    

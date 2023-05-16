@@ -7,7 +7,6 @@ CREATE VIEW vUsuario AS
 SELECT Usuario_id, nombres, apellidos, ocupacion, edad, fotoPerfil, correo, username, userPassword, descripcion, direccion, noTelefono
 FROM Usuario;
 
-
 /*--------------------------------------------------------------------------------CHAT--------------------------------------------------------------------------*/
 DROP VIEW IF EXISTS vChat;
 

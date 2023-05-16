@@ -1,7 +1,9 @@
+/*
 DROP DATABASE IF EXISTS UR_WEBPAGE;
 CREATE DATABASE UR_WEBPAGE;
+*/
 
-
+USE UR_WEBPAGE;
 -- 												TABLA DE USUARIOS										 --
 DROP TABLE IF EXISTS Usuario;
 CREATE TABLE Usuario(
@@ -88,11 +90,10 @@ CREATE TABLE Multimedia(
 	FOREIGN KEY (Alojamiento_id) REFERENCES Alojamiento(Alojamiento_id)
 );
 
-SELECT * FROM CHAT;
-
-
+/*
 DROP TABLE IF EXISTS Mensaje;
 DROP TABLE IF EXISTS Chat;
 DROP TABLE IF EXISTS Multimedia;
 DROP TABLE IF EXISTS Alojamiento;
 DROP TABLE IF EXISTS Usuario;
+*/
